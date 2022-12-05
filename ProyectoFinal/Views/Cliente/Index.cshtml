@@ -1,0 +1,19 @@
+﻿@model List<Cliente>
+@{
+}
+
+<a asp-action="Guardar" asp-controller="Cliente" class="btn btn-primary">Crear Cliente</a>
+@foreach (var item in Model)
+{
+
+    <p>@item.id_cliente</p>
+    <p>@item.clie_nombre</p> 
+   <p>@item.clie_apellido</p>
+   <p> @item.clie_dni</p>
+    @item.clie_cuit
+    @item.clie_razon_social
+
+    <a asp-action="Editar" asp-controller="Cliente" class="btn btn-primary" asp-route-id="@item.id_cliente">Editar Cliente</a>
+    <br>
+    <a asp-action="Eliminar" asp-controller="Cliente" class="btn btn-danger">Eliminar Cliente</a>
+}

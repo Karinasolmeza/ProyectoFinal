@@ -1,5 +1,6 @@
-﻿
+﻿@*@model List<Cliente>*@
 @{
+   
     ViewData["Title"] = "Clientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,5 +8,25 @@
 <div class="text-center">
     <div class="alert alert-success">
         <h2 class="display-4">Soy la pagina CLIENTES</h2>
+       
+
     </div>
+
+
+
+ 
     </div>
+<h1> Los clientes son </h1>
+
+<a class="btn btn-primary" asp-controller="Cliente" asp-action="Index"><i class="bi bi-box-arrow-right"></i> Botón a clientes Listar</a>
+@*
+@foreach (var item in Model)
+{
+
+    @item.id_cliente
+    @item.clie_nombre
+    @item.clie_apellido
+    @item.clie_dni
+    @item.clie_cuit
+    @item.clie_razon_social
+}*@

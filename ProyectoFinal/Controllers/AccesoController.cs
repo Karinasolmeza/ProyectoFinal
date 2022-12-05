@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal.Models;
-using ProyectoFinal.Data;
-
+using ProyectoFinal.Datos;
 using Microsoft.AspNetCore.Authentication.Cookies; //USING PARA COOKIES
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;

@@ -28,7 +28,7 @@ namespace ProyectoFinal.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Administrador,Supervisor")]
+        [Authorize(Roles = "Administrador,Supervisor,Cliente")]
         public IActionResult Compras()
         {
             return View();
