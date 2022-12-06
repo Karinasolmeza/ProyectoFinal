@@ -69,7 +69,7 @@ namespace ProyectoFinal.Datos
                     conexionTemp.Open();
                     SqlCommand cmd = new SqlCommand("Obtener", conexionTemp);
 
-                    cmd.Parameters.AddWithValue("id_cliente", id_cliente);
+                    cmd.Parameters.AddWithValue("id_Contacto", id_cliente);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     using (var lector = cmd.ExecuteReader())
@@ -150,10 +150,11 @@ namespace ProyectoFinal.Datos
                 using(var conexionTemp = new SqlConnection(conexion.getCadenaSQL()))
                 {
                     conexionTemp.Open();
+
                     SqlCommand cmd = new SqlCommand("Editar", conexionTemp);
 
-                    cmd.Parameters.AddWithValue("id_cliente", oCliente.id_cliente);
 
+                    cmd.Parameters.AddWithValue("id_cliente", oCliente.id_cliente);
                     cmd.Parameters.AddWithValue("clie_nombre", oCliente.clie_nombre);
                     cmd.Parameters.AddWithValue("clie_apellido", oCliente.clie_apellido);
                     cmd.Parameters.AddWithValue("clie_dni", oCliente.clie_dni);
@@ -174,6 +175,7 @@ namespace ProyectoFinal.Datos
                 respuesta = false;
 
             }
+
             return respuesta;
 
         }

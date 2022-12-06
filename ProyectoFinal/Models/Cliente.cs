@@ -10,7 +10,7 @@
 
         public string? clie_dni { get; set; }
 
-        public string? clie_cuit { get; set; }
+        public string?  clie_cuit { get; set; }
 
         public string? clie_razon_social { get; set; }
     }

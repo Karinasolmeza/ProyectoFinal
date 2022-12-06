@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal.Datos;
 using ProyectoFinal.Models;
-using System.Security.Cryptography.X509Certificates;
+
 
 namespace ProyectoFinal.Controllers
 
@@ -31,7 +31,9 @@ namespace ProyectoFinal.Controllers
         public IActionResult Guardar(Cliente oCliente)
         {
             var respuesta = clienteDatos.Guardar(oCliente);
+
             if (respuesta){
+
                 return RedirectToAction("Index");
 
             }
@@ -42,18 +44,27 @@ namespace ProyectoFinal.Controllers
             }
         }
 
+      
         //Método para la vista
-        public IActionResult Editar(int id_cliente)
+        public IActionResult Editar(int id)
         {
-            return View();
-            var oCliente = clienteDatos.Obtener(id_cliente);
+            
+            var oCliente = clienteDatos.Obtener(id);
+
+            return View(oCliente);
         }
+
+
+
+
 
         [HttpPost]
         public IActionResult Editar(Cliente oCliente)
         {
             var respuesta = clienteDatos.Editar(oCliente);
+
             if (respuesta) {
+
                 return RedirectToAction("Index");
                     }
             else
@@ -65,14 +76,15 @@ namespace ProyectoFinal.Controllers
 
         //Método para vista eliminar 
 
-        public IActionResult Eliminar(int id_cliente)
+        public IActionResult Eliminar(int id)
         {
-            var oCliente = clienteDatos.Obtener(id_cliente);
+            var oCliente = clienteDatos.Obtener(id);
+
             return View(oCliente);
         }
 
         //Método para logica de eliminar 
-
+        [HttpPost]
         public IActionResult Eliminar(Cliente oCliente)
         {
             var respuesta = clienteDatos.Eliminar(oCliente.id_cliente);

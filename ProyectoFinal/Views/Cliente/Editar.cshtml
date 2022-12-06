@@ -9,9 +9,10 @@
 <h1>La página edición funciona</h1>
 
 
-
+@*//Agregar id y esconderlo*@
 <form asp-action="Editar" asp-controller="Cliente" method="post">
-    <input asp-for="id_cliente" type="hidden" class="form-control"/>
+        <div class="form-group">
+    <input asp-for="id_cliente" type="text" class="form-control"/>
     <div class="form-group">
         <label for="exampleInputEmail1">Nombre</label>
         <input asp-for="clie_nombre" type="text" class="form-control">
@@ -33,4 +34,9 @@
         <input asp-for="clie_razon_social" type="text" class="form-control">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
 </form>
+
+
+
+
