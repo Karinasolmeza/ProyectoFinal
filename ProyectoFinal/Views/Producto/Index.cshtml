@@ -1,0 +1,78 @@
+﻿
+@model List<Producto>
+
+
+@{
+}
+@*<h1>Producto lista </h1>
+@foreach (var item in Model)
+{
+    @item.id_producto
+    @item.prod_nombre
+    @item.prod_precio
+    @item.prod_stock
+    @item.prod_detalle
+    @item.prod_img
+}*@
+<h1>Guardar producto funciona</h1>
+
+<body>
+	<div class="container">
+		<div class="table-responsive">
+			<div class="table-wrapper">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-xs-6">
+							<h2>Manejar <b>Productos</b></h2>
+						</div>
+						<div class="col-xs-6">
+							<a asp-action="GuardarProducto" asp-controller="Producto" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Crear Producto</span></a>
+
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+
+							<th>Id Prod</th>
+							<th>Nombre</th>
+							<th>Precio</th>
+							<th>Stock</th>
+							<th>Detalle</th>
+							<th>Imagen</th>
+							<th>Acción</th>
+						</tr>
+					</thead>
+
+					@foreach (var item in Model)
+					{
+					
+						<tbody>
+						<tr>
+							
+
+
+								<th>@item.id_producto</th>	
+								<th>@item.prod_nombre</th>
+								<th>@item.prod_precio</th>
+								<th>@item.prod_stock</th>
+								<th>@item.prod_detalle</th>
+								<th>@item.prod_img</th>
+
+								  <td>
+									<a asp-action="EditarProducto" asp-controller="Producto" class="edit" asp-route-id="@item.id_producto"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+									@*<a href="#editClienteModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>*@
+									@*<a href="#deleteClienteModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>*@
+									<a asp-action="EliminarProducto" asp-controller="Producto" class="bdanger" asp-route-id="@item.id_producto"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								</td>
+						</tr>
+						</tbody>
+					}
+				</table>
+				
+			</div>
+		</div>
+	</div>
+</body>
+
