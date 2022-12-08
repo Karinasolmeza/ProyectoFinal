@@ -1,0 +1,36 @@
+﻿@model Producto
+
+@{
+}
+
+<h1>Editar Producto @Html.DisplayTextFor(m => m.prod_nombre)</h1>
+
+@*//Agregar id y esconderlo*@
+<form asp-action="EditarProducto" asp-controller="Producto" method="post">
+    <div class="form-group">
+        <input asp-for="id_producto" type="text" class="form-control" />
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nombre</label>
+            <input asp-for="prod_nombre" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Precio</label>
+            <input asp-for="prod_precio" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Stock</label>
+            <input asp-for="prod_stock" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Detalle</label>
+            <input asp-for="prod_detalle" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">img</label>
+            <input asp-for="prod_img" type="text" class="form-control">
+        </div>
+        @*<button type="submit" class="btn btn-primary">Submit</button>*@
+        <button name="submit" type="submit" id="guardar-submit" data-submit="...guardando">Guardar</button>
+    </div>
+</form>
+
