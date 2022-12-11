@@ -1,0 +1,24 @@
+﻿@model Empleado
+
+@{
+}
+<h1>Guardar empleado funciona</h1>
+
+<form asp-action="GuardarEmpleado" asp-controller="Empleado" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nombre</label>
+        <input asp-for="emple_nombre" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Apellido</label>
+        <input asp-for="emple_apellido" type="text" class="form-control">
+    </div>
+   
+ 
+
+    <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
+  
+</form>
+
+
+
