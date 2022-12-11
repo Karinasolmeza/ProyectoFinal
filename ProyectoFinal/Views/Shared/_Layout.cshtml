@@ -194,9 +194,9 @@
 
                         @if (User.IsInRole("Administrador") || User.IsInRole("Supervisor") || User.IsInRole("Empleado"))
                         {
-                            <li class="nav-item">
+                         @*   <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Ventas">VENTAS</a>
-                            </li>
+                            </li>*@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a>
                             </li>
@@ -215,11 +215,15 @@
                             </li>*@
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Index">CLIENTES</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Index">Clientes</a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="Index">Empleados</a>
                             </li>
                         }
                     
