@@ -1,0 +1,68 @@
+﻿
+@model List<Proveedor>
+
+
+@{
+}
+
+<h1>Guardar proveedor funciona</h1>
+
+<body>
+	<div class="container">
+		<div class="table-responsive">
+			<div class="table-wrapper">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-xs-6">
+							<h2>Manejar <b>Proveedor</b></h2>
+						</div>
+						<div class="col-xs-6">
+							<a asp-action="GuardarProveedor" asp-controller="Proveedor" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Crear Proveedor</span></a>
+
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+
+							<th>Id Prove</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Dirección</th>
+							<th>Cuit</th>
+						
+							<th>Acción</th>
+						</tr>
+					</thead>
+
+					@foreach (var item in Model)
+					{
+					
+						<tbody>
+						<tr>
+							
+
+
+								<th>@item.id_proveedor</th>	
+								<th>@item.prove_nombre</th>
+								<th>@item.prove_apellido</th>
+								<th>@item.prove_direccion</th>
+								<th>@item.prove_cuit</th>
+								
+
+								  <td>
+									<a asp-action="EditarProveedor" asp-controller="Proveedor" class="edit" asp-route-id="@item.id_proveedor"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+								
+									<a asp-action="EliminarProveedor" asp-controller="Proveedor" class="bdanger" asp-route-id="@item.id_proveedor"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								</td>
+						</tr>
+						</tbody>
+					}
+				</table>
+				
+			</div>
+		</div>
+	</div>
+</body>
+
