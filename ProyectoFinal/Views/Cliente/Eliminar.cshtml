@@ -1,10 +1,23 @@
 ﻿@model Cliente
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
+    ViewData["Title"] = "Eliminar Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
 <h1>Eliminar @Html.DisplayTextFor(m => m.clie_nombre)</h1>
 
 <form asp-action="Eliminar" asp-controller="Cliente" method="post">
@@ -17,3 +30,5 @@
     <button type="submit" class="btn-danger">Eliminar</button>
 
 </form>
+</body>
+</html>

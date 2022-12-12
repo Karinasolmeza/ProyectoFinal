@@ -1,7 +1,22 @@
 ﻿@model Proveedor
-
 @{
+    ViewData["Title"] = "Guardar Proveedor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
 <h1>Guardar proveedor funciona</h1>
 
 <form asp-action="GuardarProveedor" asp-controller="Proveedor" method="post">
@@ -27,5 +42,6 @@
   
 </form>
 
-
+</body>
+</html>
 
