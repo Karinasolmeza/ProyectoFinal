@@ -1,5 +1,8 @@
 ﻿@model List<Cliente>
 @{
+
+	 ViewData["Title"] = "Clientes";
+     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @*<a asp-action="Guardar" asp-controller="Cliente" class="btn btn-primary">Crear Cliente</a>
@@ -20,9 +23,18 @@
 *@
 
 
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
 
 
-    <body>
+<body>
     <div class="container">
 		<div class="table-responsive">
 			<div class="table-wrapper">
@@ -56,9 +68,6 @@
 					<tbody>
 						<tr>
 							
-
-							@*@foreach (var item in Model)
-							{*@
 								<th>@item.id_cliente</th>
 								<th>@item.clie_nombre</th>
 								<th>@item.clie_apellido</th>
@@ -69,17 +78,19 @@
 
 							<td>
 								<a asp-action="Editar" asp-controller="Cliente" class="edit" asp-route-id="@item.id_cliente"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-								@*<a href="#editClienteModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>*@
-								@*<a href="#deleteClienteModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>*@
+							
 								<a asp-action="Eliminar" asp-controller="Cliente" class="bdanger" asp-route-id="@item.id_cliente"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 							</td>
 							
 						</tr>
 					</tbody>
 					}
+
+
 				</table>
-	
 			</div>
 		</div>        
     </div>
 	</body>
+	
+</html>

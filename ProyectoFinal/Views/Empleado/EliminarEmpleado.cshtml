@@ -1,6 +1,24 @@
 ﻿@model Empleado
+
 @{
+    ViewData["Title"] = "Eliminar Empleado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+
 <h1>Eliminar @Html.DisplayTextFor(m => m.emple_nombre)</h1>
 
 <form asp-action="EliminarEmpleado" asp-controller="Empleado" method="post">
@@ -13,3 +31,5 @@
     <button type="submit" class="btn-danger">Eliminar</button>
 
 </form>
+</body>
+</html>

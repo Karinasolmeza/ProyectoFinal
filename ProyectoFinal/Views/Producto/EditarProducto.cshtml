@@ -1,8 +1,23 @@
 ﻿@model Producto
 
 @{
+    ViewData["Title"] = "Editar Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
 <h1>Editar Producto @Html.DisplayTextFor(m => m.prod_nombre)</h1>
 
 @*//Agregar id y esconderlo*@
@@ -34,3 +49,5 @@
     </div>
 </form>
 
+</body>
+</html>

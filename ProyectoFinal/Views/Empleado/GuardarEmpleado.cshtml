@@ -1,7 +1,25 @@
 ﻿@model Empleado
 
+
 @{
+	ViewData["Title"] = "Guardar Empleado";
+     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+
 <h1>Guardar empleado funciona</h1>
 
 <form asp-action="GuardarEmpleado" asp-controller="Empleado" method="post">
@@ -19,6 +37,7 @@
     <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
   
 </form>
-
+</body>
+</html>
 
 

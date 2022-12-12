@@ -1,7 +1,24 @@
 ﻿@model Empleado
 
 @{
+    ViewData["Title"] = "Editar Empleado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+
 
 <h1>Editar Empleado @Html.DisplayTextFor(m => m.emple_nombre)</h1>
 
@@ -24,3 +41,5 @@
     </div>
 </form>
 
+</body>
+</html>

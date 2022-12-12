@@ -1,8 +1,21 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @{
     ViewData["Title"] = "Home Page";
+     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
 
 <div class="text-center">
      @if (User.IsInRole("Administrador"))
@@ -22,7 +35,11 @@
 
 
    
-        <h2 class="display-4">Soy la pagina INDEX</h2>
-    
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <h2 class="display-4">Soy la pagina INDEX HOME</h2>
+
+
 </div>
+    
+</body>
+</html>
+

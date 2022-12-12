@@ -3,7 +3,24 @@
 
 
 @{
+	ViewData["Title"] = "Productos";
+     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+
+
 @*<h1>Producto lista </h1>
 @foreach (var item in Model)
 {
@@ -14,9 +31,10 @@
     @item.prod_detalle
     @item.prod_img
 }*@
+<body>
 <h1>Guardar producto funciona</h1>
 
-<body>
+
 	<div class="container">
 		<div class="table-responsive">
 			<div class="table-wrapper">
@@ -59,6 +77,7 @@
 								<th>@item.prod_stock</th>
 								<th>@item.prod_detalle</th>
 								<th>@item.prod_img</th>
+								
 
 								  <td>
 									<a asp-action="EditarProducto" asp-controller="Producto" class="edit" asp-route-id="@item.id_producto"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -76,3 +95,4 @@
 	</div>
 </body>
 
+</html>
