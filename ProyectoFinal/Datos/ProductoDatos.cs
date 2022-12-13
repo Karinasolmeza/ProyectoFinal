@@ -184,6 +184,9 @@ namespace ProyectoFinal.Datos
 
         }
 
+
+       
+
         public bool EliminarProducto(int id_producto)
         {
             bool respuesta;

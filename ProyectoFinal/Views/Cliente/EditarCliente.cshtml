@@ -1,0 +1,70 @@
+﻿@model Cliente
+
+@{
+    ViewData["Title"] = "Editar Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+
+<h1>Editar Cliente @Html.DisplayTextFor(m => m.clie_nombre)</h1>
+
+
+@*//Agregar id y esconderlo*@
+<form asp-action="EditarCliente" asp-controller="Cliente" method="post">
+        <div class="form-group">
+    <input asp-for="id_cliente" type="text" class="form-control"/>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nombre</label>
+        <input asp-for="clie_nombre" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Apellido</label>
+        <input asp-for="clie_apellido" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Dni</label>
+        <input asp-for="clie_dni" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Cuit</label>
+        <input asp-for="clie_cuit" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Razón social</label>
+        <input asp-for="clie_razon_social" type="text" class="form-control">
+    </div>
+            
+            <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
+                <select asp-for="clie_tipo" class="form-select form-control" id="inputGroupSelect01">
+                                    <option selected>Elige...</option>
+                    <option value="Particular">Particular</option>
+                <option value="Empresa">Empresa</option>
+
+                                        </select>
+                                    </div>
+
+    @*<button type="submit" class="btn btn-primary">Submit</button>*@
+        <button name="submit" type="submit" id="guardar-submit" data-submit="...guardando">Guardar</button>
+    </div>
+</form>
+
+</body>
+
+</html>
+
+
+

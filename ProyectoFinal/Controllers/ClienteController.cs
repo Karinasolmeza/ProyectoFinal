@@ -16,21 +16,21 @@ namespace ProyectoFinal.Controllers
         public IActionResult Index()
         {
 
-            var oLista = clienteDatos.Listar();
+            var oLista = clienteDatos.ListarCliente();
 
             return View(oLista);
         }
 
-        public IActionResult Guardar()
+        public IActionResult GuardarCliente()
         {
             return View();
         }
 
 
         [HttpPost]
-        public IActionResult Guardar(Cliente oCliente)
+        public IActionResult GuardarCliente(Cliente oCliente)
         {
-            var respuesta = clienteDatos.Guardar(oCliente);
+            var respuesta = clienteDatos.GuardarCliente(oCliente);
 
             if (respuesta){
 
@@ -46,10 +46,10 @@ namespace ProyectoFinal.Controllers
 
       
         //Método para la vista
-        public IActionResult Editar(int id)
+        public IActionResult EditarCliente(int id)
         {
             
-            var oCliente = clienteDatos.Obtener(id);
+            var oCliente = clienteDatos.ObtenerCliente(id);
 
             return View(oCliente);
         }
@@ -59,9 +59,9 @@ namespace ProyectoFinal.Controllers
 
 
         [HttpPost]
-        public IActionResult Editar(Cliente oCliente)
+        public IActionResult EditarCliente(Cliente oCliente)
         {
-            var respuesta = clienteDatos.Editar(oCliente);
+            var respuesta = clienteDatos.EditarCliente(oCliente);
 
             if (respuesta) {
 
@@ -76,18 +76,18 @@ namespace ProyectoFinal.Controllers
 
         //Método para vista eliminar 
 
-        public IActionResult Eliminar(int id)
+        public IActionResult EliminarCliente(int id)
         {
-            var oCliente = clienteDatos.Obtener(id);
+            var oCliente = clienteDatos.ObtenerCliente(id);
 
             return View(oCliente);
         }
 
         //Método para logica de eliminar 
         [HttpPost]
-        public IActionResult Eliminar(Cliente oCliente)
+        public IActionResult EliminarCliente(Cliente oCliente)
         {
-            var respuesta = clienteDatos.Eliminar(oCliente.id_cliente);
+            var respuesta = clienteDatos.EliminarCliente(oCliente.id_cliente);
 
             if (respuesta) {
 
