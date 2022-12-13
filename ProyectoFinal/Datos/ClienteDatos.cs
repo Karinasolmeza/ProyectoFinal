@@ -9,7 +9,7 @@ namespace ProyectoFinal.Datos
     public class ClienteDatos
 
     {
-        public List<Cliente> Listar()
+        public List<Cliente> ListarCliente()
         {
             var oLista = new List<Cliente>();
             //Instancia de la conexion
@@ -25,7 +25,7 @@ namespace ProyectoFinal.Datos
                 //Aca instancio un objeto para las query y la relaciono con el sp
 
 
-                SqlCommand cmd = new SqlCommand("Listar", conexionTemp);
+                SqlCommand cmd = new SqlCommand("ListarCliente", conexionTemp);
                 cmd.CommandType = CommandType.StoredProcedure;
                 //Comienzo la lectura de datos
                 using (var lector = cmd.ExecuteReader())
@@ -41,7 +41,8 @@ namespace ProyectoFinal.Datos
                             clie_apellido = Convert.ToString(lector["clie_apellido"]),
                             clie_dni = Convert.ToString(lector["clie_dni"]),
                             clie_cuit = Convert.ToString(lector["clie_cuit"]),
-                            clie_razon_social = Convert.ToString(lector["clie_razon_social"])
+                            clie_razon_social = Convert.ToString(lector["clie_razon_social"]),
+                            clie_tipo = Convert.ToString(lector["clie_tipo"])
 
                         });
 
@@ -54,7 +55,7 @@ namespace ProyectoFinal.Datos
         }
 
 
-        public Cliente Obtener(int id_cliente)
+        public Cliente ObtenerCliente(int id_cliente)
         {
             var oCliente = new Cliente();
 
@@ -67,7 +68,7 @@ namespace ProyectoFinal.Datos
                 {
 
                     conexionTemp.Open();
-                    SqlCommand cmd = new SqlCommand("Obtener", conexionTemp);
+                    SqlCommand cmd = new SqlCommand("ObtenerCliente", conexionTemp);
 
                     cmd.Parameters.AddWithValue("id_Contacto", id_cliente);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -82,6 +83,7 @@ namespace ProyectoFinal.Datos
                             oCliente.clie_dni = Convert.ToString(lector["clie_dni"]);
                             oCliente.clie_cuit = Convert.ToString(lector["clie_cuit"]);
                             oCliente.clie_razon_social = Convert.ToString(lector["clie_razon_social"]);
+                            oCliente.clie_tipo = Convert.ToString(lector["clie_tipo"]);
 
                         }
 
@@ -103,7 +105,7 @@ namespace ProyectoFinal.Datos
         
 
 
-        public bool Guardar(Cliente oCliente)
+        public bool GuardarCliente(Cliente oCliente)
         {
             bool respuesta;
 
@@ -113,13 +115,14 @@ namespace ProyectoFinal.Datos
                 using (var conexionTemp = new SqlConnection(conexion.getCadenaSQL()))
                 {
                     conexionTemp.Open();
-                    SqlCommand cmd = new SqlCommand("Guardar", conexionTemp);
+                    SqlCommand cmd = new SqlCommand("GuardarCliente", conexionTemp);
 
                     cmd.Parameters.AddWithValue("clie_nombre", oCliente.clie_nombre);
                     cmd.Parameters.AddWithValue("clie_apellido", oCliente.clie_apellido);
                     cmd.Parameters.AddWithValue("clie_dni", oCliente.clie_dni);
                     cmd.Parameters.AddWithValue("clie_cuit", oCliente.clie_cuit);
                     cmd.Parameters.AddWithValue("clie_razon_social", oCliente.clie_razon_social);
+                    cmd.Parameters.AddWithValue("clie_tipo", oCliente.clie_tipo);
 
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -139,7 +142,7 @@ namespace ProyectoFinal.Datos
 
 
 
-        public bool Editar(Cliente oCliente)
+        public bool EditarCliente(Cliente oCliente)
         {
             bool respuesta;
 
@@ -151,7 +154,7 @@ namespace ProyectoFinal.Datos
                 {
                     conexionTemp.Open();
 
-                    SqlCommand cmd = new SqlCommand("Editar", conexionTemp);
+                    SqlCommand cmd = new SqlCommand("EditarCliente", conexionTemp);
 
 
                     cmd.Parameters.AddWithValue("id_cliente", oCliente.id_cliente);
@@ -160,6 +163,7 @@ namespace ProyectoFinal.Datos
                     cmd.Parameters.AddWithValue("clie_dni", oCliente.clie_dni);
                     cmd.Parameters.AddWithValue("clie_cuit", oCliente.clie_cuit);
                     cmd.Parameters.AddWithValue("clie_razon_social", oCliente.clie_razon_social);
+                    cmd.Parameters.AddWithValue("clie_tipo", oCliente.clie_tipo);
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
@@ -180,7 +184,7 @@ namespace ProyectoFinal.Datos
 
         }
 
-        public bool Eliminar(int id_cliente)
+        public bool EliminarCliente(int id_cliente)
         {
             bool respuesta;
             try
@@ -189,7 +193,7 @@ namespace ProyectoFinal.Datos
                 using(var conexionTemp = new SqlConnection(conexion.getCadenaSQL()))
                 {
                     conexionTemp.Open();
-                    SqlCommand cmd = new SqlCommand("Eliminar", conexionTemp);
+                    SqlCommand cmd = new SqlCommand("EliminarCliente", conexionTemp);
                     cmd.Parameters.AddWithValue("id_cliente", id_cliente);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();

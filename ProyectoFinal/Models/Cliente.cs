@@ -13,5 +13,7 @@
         public string?  clie_cuit { get; set; }
 
         public string? clie_razon_social { get; set; }
+
+        public string? clie_tipo { get; set; }
     }
 }

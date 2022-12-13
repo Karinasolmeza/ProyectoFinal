@@ -44,7 +44,7 @@
 							<h2>Manejar <b>Clientes</b></h2>
 						</div>
 						<div class="col-xs-6">
-							<a asp-action="Guardar" asp-controller="Cliente" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Crear Cliente</span></a>
+							<a asp-action="GuardarCliente" asp-controller="Cliente" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Crear Cliente</span></a>
 									
 						</div>
 					</div>
@@ -59,6 +59,7 @@
 							<th>Dni</th>
 							<th>Cuit</th>
 							<th>Razón Social</th>
+							<th>Tipo de Cliente</th>
 							<th>Acción</th>
 						</tr>
 					</thead>
@@ -74,12 +75,15 @@
 								<th>@item.clie_dni</th>
 								<th>@item.clie_cuit</th>
 								<th>@item.clie_razon_social</th>
+								<th>@item.clie_tipo</th>
+			
+							
 							
 
 							<td>
-								<a asp-action="Editar" asp-controller="Cliente" class="edit" asp-route-id="@item.id_cliente"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+								<a asp-action="EditarCliente" asp-controller="Cliente" class="edit" asp-route-id="@item.id_cliente"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							
-								<a asp-action="Eliminar" asp-controller="Cliente" class="bdanger" asp-route-id="@item.id_cliente"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								<a asp-action="EliminarCliente" asp-controller="Cliente" class="bdanger" asp-route-id="@item.id_cliente"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 							</td>
 							
 						</tr>
