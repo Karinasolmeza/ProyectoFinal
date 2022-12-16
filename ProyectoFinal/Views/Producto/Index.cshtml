@@ -59,6 +59,8 @@
 							<th>Stock</th>
 							<th>Detalle</th>
 							<th>Imagen</th>
+							<th>Proveedor ID</th>
+							@*<th>Provedor nombre</th>*@
 							<th>Acción</th>
 						</tr>
 					</thead>
@@ -68,21 +70,20 @@
 					
 						<tbody>
 						<tr>
-							
-
-
+	
 								<th>@item.id_producto</th>	
 								<th>@item.prod_nombre</th>
 								<th>@item.prod_precio</th>
 								<th>@item.prod_stock</th>
 								<th>@item.prod_detalle</th>
 								<th>@item.prod_img</th>
+								<th>@item.prod_proveedor</th>
+							@*	<th>@item.proveedorAsociado.prove_nombre</th>*@
 								
 
 								  <td>
 									<a asp-action="EditarProducto" asp-controller="Producto" class="edit" asp-route-id="@item.id_producto"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-									@*<a href="#editClienteModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>*@
-									@*<a href="#deleteClienteModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>*@
+									
 									<a asp-action="EliminarProducto" asp-controller="Producto" class="bdanger" asp-route-id="@item.id_producto"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 								</td>
 						</tr>

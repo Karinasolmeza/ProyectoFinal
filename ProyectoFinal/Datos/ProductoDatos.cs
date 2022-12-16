@@ -42,7 +42,19 @@ namespace ProyectoFinal.Datos
                             prod_precio = Convert.ToDecimal(lector["prod_precio"]),
                             prod_stock = Convert.ToDecimal(lector["prod_stock"]),
                             prod_detalle = Convert.ToString(lector["prod_detalle"]),
-                            prod_img = Convert.ToString(lector["prod_img"])
+                            prod_img = Convert.ToString(lector["prod_img"]),
+                            prod_proveedor = Convert.ToInt32(lector["prod_proveedor"]),
+                            proveedorAsociado= new Proveedor()
+                            {
+                                id_proveedor = Convert.ToInt32(lector["id_proveedor"]),
+                                prove_nombre = Convert.ToString(lector["prove_nombre"]),
+                                prove_apellido = Convert.ToString(lector["prove_apellido"]),
+                                prove_direccion = Convert.ToString(lector["prove_direccion"]),
+                                prove_cuit = Convert.ToString(lector["prove_cuit"])
+
+
+                            }
+
                             //prod_precio = Convert.ToDecimal(lector["prod_precio"].ToString()),Preguntar como guardar los decimales
 
                         });
@@ -84,6 +96,9 @@ namespace ProyectoFinal.Datos
                             oProducto.prod_stock = Convert.ToDecimal(lector["prod_stock"]);
                             oProducto.prod_detalle = Convert.ToString(lector["prod_detalle"]);
                             oProducto.prod_img = Convert.ToString(lector["prod_img"]);
+                            oProducto.prod_proveedor = Convert.ToInt32(lector["prod_proveedor"]);
+
+
 
                         }
 
@@ -122,6 +137,9 @@ namespace ProyectoFinal.Datos
                     cmd.Parameters.AddWithValue("prod_stock", oProducto.prod_stock);
                     cmd.Parameters.AddWithValue("prod_detalle", oProducto.prod_detalle);
                     cmd.Parameters.AddWithValue("prod_img", oProducto.prod_img);
+                    cmd.Parameters.AddWithValue("prod_proveedor", oProducto.prod_proveedor);
+
+
 
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -139,6 +157,11 @@ namespace ProyectoFinal.Datos
 
             return respuesta;
         }
+
+
+
+
+
 
 
 
@@ -163,6 +186,9 @@ namespace ProyectoFinal.Datos
                     cmd.Parameters.AddWithValue("prod_stock", oProducto.prod_stock);
                     cmd.Parameters.AddWithValue("prod_detalle", oProducto.prod_detalle);
                     cmd.Parameters.AddWithValue("prod_img", oProducto.prod_img);
+                    cmd.Parameters.AddWithValue("prod_proveedor", oProducto.prod_proveedor);
+
+
 
 
                     cmd.CommandType = CommandType.StoredProcedure;

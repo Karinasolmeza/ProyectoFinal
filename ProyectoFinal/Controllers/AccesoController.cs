@@ -30,8 +30,8 @@ namespace ProyectoFinal.Controllers
                 new Claim("Correo",usuario.Correo)
 
                 };
-
-                foreach(string rol in usuario.Roles) //Iteramos roles desde var claime ingresamos alli, almacenamos en var rol de un array de strings de usuarios 
+               
+                    foreach ( string rol in usuario.Roles) //.Roles  Iteramos roles desde var claime ingresamos alli, almacenamos en var rol de un array de strings de usuarios 
                 {
                     claims.Add(new Claim(ClaimTypes.Role, rol));
                 }
