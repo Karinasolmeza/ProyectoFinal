@@ -41,6 +41,7 @@ namespace ProyectoFinal.Datos
                             emple_id_supervisor = Convert.ToInt32(lector["emple_id_supervisor"]),
                             emple_id_usuario = Convert.ToInt32(lector["emple_id_usuario"])
 
+
                         });
 
                     }
