@@ -45,24 +45,57 @@
 
                     <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
 
-                      @if (User.IsInRole("Administrador") || User.IsInRole("Supervisor") || User.IsInRole("Empleado"))
+                        @if (User.IsInRole("administrador") || User.IsInRole("supervisor"))
                         {
-                    <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle icon-user" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Acceso" asp-action="IndexUsuario">Usuarios</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
+                                </div>
+                            </li>
+
+
                         }
 
-                      @if (User.IsInRole("Administrador") || User.IsInRole("Supervisor"))
+                      @if (User.IsInRole("administrador") || User.IsInRole("supervisor") || User.IsInRole("empleado"))
                         {
-                    <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a></li>
+                    @*<li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a></li>
+                            <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Categoria" asp-action="Index">Categorias</a></li>*@
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle icon-user" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedores</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Categoria" asp-action="Index">Categorias</a>
+                                </div>
+                            </li>
+                        }
+
+                         @if (User.IsInRole("administrador") || User.IsInRole("supervisor") || User.IsInRole("empleado"))
+                        {
+
+
+                            <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a></li>
+
+
+                        }
+                            @if (User.IsInRole("administrador") || User.IsInRole("supervisor"))
+
+                       {
+                    
                     <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Cliente" asp-action="Index">Clientes</a></li>
                     <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Empleado" asp-action="Index">Empleados</a></li>
                         }
 
 
-                        @if (User.IsInRole("Cliente"))@*Encapsulamiento para vistas con @if solo la verá quien este asignado, los demás no *@
+                        @if (User.IsInRole("cliente"))@*Encapsulamiento para vistas con @if solo la verá quien este asignado, los demás no *@
                         {
+                            <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Producto" asp-action="mostrarProducto">Productos</a></li>
                             <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Compras">Compras</a></li>
                         }
 
+                        <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Acceso" asp-action="Salir">Salir</a></li>
                         <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Acceso" asp-action="Salir">Salir</a></li>
                         @* <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>*@
                 
