@@ -18,8 +18,10 @@ namespace ProyectoFinal.Models
 
         public string? clie_tipo { get; set; }
 
+
         [ForeignKey("Usuario")]
         public int? clie_id_usuario { get; set; }
+
 
 
     }

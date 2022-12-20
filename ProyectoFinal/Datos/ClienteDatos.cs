@@ -42,8 +42,10 @@ namespace ProyectoFinal.Datos
                             clie_dni = Convert.ToString(lector["clie_dni"]),
                             clie_cuit = Convert.ToString(lector["clie_cuit"]),
                             clie_razon_social = Convert.ToString(lector["clie_razon_social"]),
+
                             clie_tipo = Convert.ToString(lector["clie_tipo"]),
                             clie_id_usuario = Convert.ToInt32(lector["clie_id_usuario"])
+
 
                         });
 
@@ -85,7 +87,10 @@ namespace ProyectoFinal.Datos
                             oCliente.clie_cuit = Convert.ToString(lector["clie_cuit"]);
                             oCliente.clie_razon_social = Convert.ToString(lector["clie_razon_social"]);
                             oCliente.clie_tipo = Convert.ToString(lector["clie_tipo"]);
+
                             oCliente.clie_id_usuario = Convert.ToInt32(lector["clie_id_usuario"]);
+
+
 
                         }
 
@@ -125,6 +130,7 @@ namespace ProyectoFinal.Datos
                     cmd.Parameters.AddWithValue("clie_cuit", oCliente.clie_cuit);
                     cmd.Parameters.AddWithValue("clie_razon_social", oCliente.clie_razon_social);
                     cmd.Parameters.AddWithValue("clie_tipo", oCliente.clie_tipo);
+
                     cmd.Parameters.AddWithValue("clie_id_usuario", oCliente.clie_id_usuario);
 
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -167,8 +173,10 @@ namespace ProyectoFinal.Datos
                     cmd.Parameters.AddWithValue("clie_cuit", oCliente.clie_cuit);
                     cmd.Parameters.AddWithValue("clie_razon_social", oCliente.clie_razon_social);
                     cmd.Parameters.AddWithValue("clie_tipo", oCliente.clie_tipo);
+
                     cmd.Parameters.AddWithValue("clie_id_usuario", oCliente.clie_id_usuario);
                    
+
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
