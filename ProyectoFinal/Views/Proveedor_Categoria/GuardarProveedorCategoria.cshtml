@@ -1,0 +1,40 @@
+﻿@model Proveedor_Categoria
+@{
+    ViewData["Title"] = "Guardar Proveedor categoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+    <h1>Guardar Proveedor/Categoria funciona</h1>
+
+    <form asp-action="GuardarProveedorCategoria" asp-controller="Proveedor_Categoria" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Id Proveedor</label>
+            <input asp-for="id_proveedor" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Id Categoria</label>
+            <input asp-for="id_categoria" type="text" class="form-control">
+        </div>
+       
+
+        <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
+        @*
+        <button type="submit" class="btn btn-primary">Submit</button>*@
+    </form>
+
+
+</body>
+</html>
