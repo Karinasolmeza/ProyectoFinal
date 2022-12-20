@@ -21,49 +21,55 @@
 
 
 <body>
-<h1>Página guardar funciona</h1>
+    <h1>Página guardar funciona</h1>
 
-<form asp-action="GuardarCliente" asp-controller="Cliente" method="post">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Nombre</label>
-        <input asp-for="clie_nombre" type="text" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Apellido</label>
-        <input asp-for="clie_apellido" type="text" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Dni</label>
-        <input asp-for="clie_dni" type="text" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Cuit</label>
-        <input asp-for="clie_cuit" type="text" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Razón social</label>
-        <input asp-for="clie_razon_social" type="text" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-		<label class="input-group-text" for="inputGroupSelect01">Tipo</label>
+    <form asp-action="GuardarCliente" asp-controller="Cliente" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nombre</label>
+            <input asp-for="clie_nombre" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Apellido</label>
+            <input asp-for="clie_apellido" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Dni</label>
+            <input asp-for="clie_dni" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Cuit</label>
+            <input asp-for="clie_cuit" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Razón social</label>
+            <input asp-for="clie_razon_social" type="text" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
             <select asp-for="clie_tipo" class="form-select form-control" id="inputGroupSelect01">
-								<option selected>Elige...</option>
+                <option selected>Elige...</option>
                 <option value="Particular">Particular</option>
                 <option value="Empresa">Empresa</option>
-											
-										</select>
-									</div>
 
-    	
-									
-									
-								
-							
+            </select>
+        </div>
 
-    <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
- @* 
-    <button type="submit" class="btn btn-primary">Submit</button>*@
-</form>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Id Usuario</label>
+            <input asp-for="clie_id_usuario" type="text" class="form-control">
+        </div>
+
+
+
+
+
+
+
+
+        <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
+
+        @* <button type="submit" class="btn btn-primary">Submit</button>*@
+    </form>
 
 </body>
 
