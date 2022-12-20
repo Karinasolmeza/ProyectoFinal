@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal.Datos;
 using ProyectoFinal.Models;
+using System.Data;
 
 namespace ProyectoFinal.Controllers
 {
@@ -9,7 +11,7 @@ namespace ProyectoFinal.Controllers
         ProductoDatos productoDatos = new ProductoDatos();
 
 
-
+        [Authorize(Roles = "administrador, empleado")]
         public IActionResult Index()
         {
 
@@ -18,6 +20,14 @@ namespace ProyectoFinal.Controllers
             return View(oLista);
         }
 
+        [Authorize(Roles = "cliente, administrador")]
+        public IActionResult mostrarProducto()
+        {
+
+            var oLista = productoDatos.mostrarProducto();
+
+            return View(oLista);
+        }
         public IActionResult GuardarProducto()
         {
             return View();

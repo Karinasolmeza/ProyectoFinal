@@ -1,16 +1,19 @@
-﻿using ProyectoFinal.Models;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using ProyectoFinal.Models;
 using System.Data.SqlClient;
 using System.Data;
 
+
 namespace ProyectoFinal.Datos
+
 {
-    public class EmpleadoDatos
-    {
+	public class CategoriaDatos
+	{
 
 
-        public List<Empleado> ListarEmpleado()
+        public List<Categoria> ListarCategoria()
         {
-            var oLista = new List<Empleado>();
+            var oLista = new List<Categoria>();
             //Instancia de la conexion
 
             var conexion = new Conexion();
@@ -24,7 +27,7 @@ namespace ProyectoFinal.Datos
                 //Aca instancio un objeto para las query y la relaciono con el sp
 
 
-                SqlCommand cmd = new SqlCommand("ListarEmpleado", conexionTemp);
+                SqlCommand cmd = new SqlCommand("ListarCategoria", conexionTemp);
                 cmd.CommandType = CommandType.StoredProcedure;
                 //Comienzo la lectura de datos
                 using (var lector = cmd.ExecuteReader())
@@ -33,13 +36,12 @@ namespace ProyectoFinal.Datos
                     while (lector.Read())
                     {
                         //Añadiendo por cada vuelta un registro
-                        oLista.Add(new Empleado()
+                        oLista.Add(new Categoria()
                         {
-                            id_empleado = Convert.ToInt32(lector["id_empleado"]),
-                            emple_nombre = Convert.ToString(lector["emple_nombre"]),
-                            emple_apellido= Convert.ToString(lector["emple_apellido"]),
-                            emple_id_supervisor = Convert.ToInt32(lector["emple_id_supervisor"]),
-                            emple_id_usuario = Convert.ToInt32(lector["emple_id_usuario"])
+                            id_categoria = Convert.ToInt32(lector["id_categoria"]),
+                           categ_detalle = Convert.ToString(lector["categ_detalle"])
+                        
+
 
                         });
 
@@ -52,9 +54,9 @@ namespace ProyectoFinal.Datos
         }
 
 
-        public Empleado ObtenerEmpleado(int id_empleado)
+        public Categoria ObtenerCategoria(int id_categoria)
         {
-            var oEmpleado = new Empleado();
+            var oCategoria = new Categoria();
 
             try
             {
@@ -65,22 +67,19 @@ namespace ProyectoFinal.Datos
                 {
 
                     conexionTemp.Open();
-                    SqlCommand cmd = new SqlCommand("ObtenerEmpleado", conexionTemp);
+                    SqlCommand cmd = new SqlCommand("ObtenerCategoria", conexionTemp);
 
-                    cmd.Parameters.AddWithValue("id_emple", id_empleado);
+                    cmd.Parameters.AddWithValue("id_Categ", id_categoria);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     using (var lector = cmd.ExecuteReader())
                     {
                         while (lector.Read())
                         {
-                            oEmpleado.id_empleado = Convert.ToInt32(lector["id_empleado"]);
-                            oEmpleado.emple_nombre = Convert.ToString(lector["emple_nombre"]);
-                            oEmpleado.emple_apellido = Convert.ToString(lector["emple_apellido"]);
-                            oEmpleado.emple_id_supervisor = Convert.ToInt32(lector["emple_id_supervisor"]);
-                            oEmpleado.emple_id_usuario = Convert.ToInt32(lector["emple_id_usuario"]);
 
-
+                            oCategoria.id_categoria = Convert.ToInt32(lector["id_categoria"]);
+                            oCategoria.categ_detalle = Convert.ToString(lector["categ_detalle"]);
+                         
 
                         }
 
@@ -91,10 +90,10 @@ namespace ProyectoFinal.Datos
             catch (Exception e)
             {
                 string error = e.Message;
-                return oEmpleado;
+                return oCategoria;
             }
 
-            return oEmpleado;
+            return oCategoria;
 
 
         }
@@ -102,7 +101,7 @@ namespace ProyectoFinal.Datos
 
 
 
-        public bool GuardarEmpleado(Empleado oEmpleado)
+        public bool GuardarCategoria(Categoria oCategoria)
         {
             bool respuesta;
 
@@ -112,13 +111,10 @@ namespace ProyectoFinal.Datos
                 using (var conexionTemp = new SqlConnection(conexion.getCadenaSQL()))
                 {
                     conexionTemp.Open();
-                    SqlCommand cmd = new SqlCommand("GuardarEmpleado", conexionTemp);
+                    SqlCommand cmd = new SqlCommand("GuardarCategoria", conexionTemp);
 
-                    cmd.Parameters.AddWithValue("emple_nombre", oEmpleado.emple_nombre);
-                    cmd.Parameters.AddWithValue("emple_apellido", oEmpleado.emple_apellido);
-                    cmd.Parameters.AddWithValue("emple_id_supervisor", oEmpleado.emple_id_supervisor);
-                    cmd.Parameters.AddWithValue("emple_id_usuario", oEmpleado.emple_id_usuario);
-
+                    cmd.Parameters.AddWithValue("categ_detalle", oCategoria.categ_detalle);
+                  
 
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -139,7 +135,7 @@ namespace ProyectoFinal.Datos
 
 
 
-        public bool EditarEmpleado(Empleado oEmpleado)
+        public bool EditarCategoria(Categoria oCategoria)
         {
             bool respuesta;
 
@@ -151,16 +147,14 @@ namespace ProyectoFinal.Datos
                 {
                     conexionTemp.Open();
 
-                    SqlCommand cmd = new SqlCommand("EditarEmpleado", conexionTemp);
+                    SqlCommand cmd = new SqlCommand("EditarCategoria", conexionTemp);
 
 
-                    cmd.Parameters.AddWithValue("id_empleado", oEmpleado.id_empleado);
-                    cmd.Parameters.AddWithValue("emple_nombre", oEmpleado.emple_nombre);
-                    cmd.Parameters.AddWithValue("emple_apellido", oEmpleado.emple_apellido);
-                    cmd.Parameters.AddWithValue("emple_id_supervisor", oEmpleado.emple_id_supervisor);
-                    cmd.Parameters.AddWithValue("emple_id_usuario", oEmpleado.emple_id_usuario);
 
 
+                    cmd.Parameters.AddWithValue("id_categoria", oCategoria.id_categoria);
+                    cmd.Parameters.AddWithValue("categ_detalle", oCategoria.categ_detalle);
+                 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
 
@@ -180,7 +174,7 @@ namespace ProyectoFinal.Datos
 
         }
 
-        public bool EliminarEmpleado(int id_empleado)
+        public bool EliminarCategoria(int id_categoria)
         {
             bool respuesta;
             try
@@ -189,8 +183,8 @@ namespace ProyectoFinal.Datos
                 using (var conexionTemp = new SqlConnection(conexion.getCadenaSQL()))
                 {
                     conexionTemp.Open();
-                    SqlCommand cmd = new SqlCommand("EliminarEmpleado", conexionTemp);
-                    cmd.Parameters.AddWithValue("id_empleado", id_empleado);
+                    SqlCommand cmd = new SqlCommand("EliminarCategoria", conexionTemp);
+                    cmd.Parameters.AddWithValue("id_categoria", id_categoria);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
@@ -204,6 +198,7 @@ namespace ProyectoFinal.Datos
             }
             return respuesta;
         }
+
 
 
 

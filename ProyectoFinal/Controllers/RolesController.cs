@@ -6,30 +6,30 @@ using System.Data;
 
 namespace ProyectoFinal.Controllers
 {
-    public class EmpleadoController : Controller
+    public class RolesController : Controller
     {
-        EmpleadoDatos empleadoDatos = new EmpleadoDatos();
+        RolesDatos rolesDatos = new RolesDatos();
 
 
         [Authorize(Roles = "administrador, supervisor")]
         public IActionResult Index()
         {
 
-            var oLista = empleadoDatos.ListarEmpleado();
+            var oLista = rolesDatos.ListarRol();
 
             return View(oLista);
         }
 
-        public IActionResult GuardarEmpleado()
+        public IActionResult GuardarRol()
         {
             return View();
         }
 
 
         [HttpPost]
-        public IActionResult GuardarEmpleado(Empleado oEmpleado)
+        public IActionResult GuardarRol(Roles oRol)
         {
-            var respuesta = empleadoDatos.GuardarEmpleado(oEmpleado);
+            var respuesta = rolesDatos.GuardarRol(oRol);
 
             if (respuesta)
             {
@@ -46,12 +46,12 @@ namespace ProyectoFinal.Controllers
 
 
         //Método para la vista
-        public IActionResult EditarEmpleado(int id)
+        public IActionResult EditarRol(int id)
         {
 
-            var oEmpleado = empleadoDatos.ObtenerEmpleado(id);
+            var oRol = rolesDatos.ObtenerRol(id);
 
-            return View(oEmpleado);
+            return View(oRol);
         }
 
 
@@ -59,9 +59,9 @@ namespace ProyectoFinal.Controllers
 
 
         [HttpPost]
-        public IActionResult EditarEmpleado(Empleado oEmpleado)
+        public IActionResult EditarRol(Roles oRol)
         {
-            var respuesta = empleadoDatos.EditarEmpleado(oEmpleado);
+            var respuesta = rolesDatos.EditarRol(oRol);
 
             if (respuesta)
             {
@@ -77,18 +77,18 @@ namespace ProyectoFinal.Controllers
 
         //Método para vista eliminar 
 
-        public IActionResult EliminarEmpleado(int id)
+        public IActionResult EliminarRol(int id)
         {
-            var oEmpleado = empleadoDatos.ObtenerEmpleado(id);
+            var oRol = rolesDatos.ObtenerRol(id);
 
-            return View(oEmpleado);
+            return View(oRol);
         }
 
         //Método para logica de eliminar 
         [HttpPost]
-        public IActionResult EliminarEmpleado(Empleado oEmpleado)
+        public IActionResult EliminarRol(Roles oRol)
         {
-            var respuesta = empleadoDatos.EliminarEmpleado(oEmpleado.id_empleado);
+            var respuesta = rolesDatos.EliminarRol(oRol.id_rol);
 
             if (respuesta)
             {

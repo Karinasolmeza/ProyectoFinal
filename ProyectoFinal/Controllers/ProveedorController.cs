@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal.Datos;
 using ProyectoFinal.Models;
 
@@ -10,7 +11,7 @@ namespace ProyectoFinal.Controllers
             ProveedorDatos proveedorDatos = new ProveedorDatos();
 
 
-
+        [Authorize(Roles ="administrador, empleado")]
             public IActionResult Index()
             {
 

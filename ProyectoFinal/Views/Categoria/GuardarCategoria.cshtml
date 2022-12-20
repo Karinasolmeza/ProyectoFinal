@@ -1,0 +1,36 @@
+﻿@model Categoria
+@{
+    ViewData["Title"] = "Guardar Categoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+<h1>Guardar Categoria funciona</h1>
+
+<form asp-action="GuardarCategoria" asp-controller="Categoria" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Detalle</label>
+        <input asp-for="categ_detalle" type="text" class="form-control">
+    </div>
+    
+ 
+
+    <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
+  
+</form>
+
+</body>
+</html>
+

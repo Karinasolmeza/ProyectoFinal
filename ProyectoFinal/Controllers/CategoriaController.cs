@@ -6,30 +6,32 @@ using System.Data;
 
 namespace ProyectoFinal.Controllers
 {
-    public class EmpleadoController : Controller
+	public class CategoriaController : Controller
     {
-        EmpleadoDatos empleadoDatos = new EmpleadoDatos();
+
+        CategoriaDatos categoriaDatos = new CategoriaDatos();
+
+        [Authorize(Roles = "administrador,empleado")]
 
 
-        [Authorize(Roles = "administrador, supervisor")]
         public IActionResult Index()
         {
 
-            var oLista = empleadoDatos.ListarEmpleado();
+            var oLista = categoriaDatos.ListarCategoria();
 
             return View(oLista);
         }
 
-        public IActionResult GuardarEmpleado()
+        public IActionResult GuardarCategoria()
         {
             return View();
         }
 
 
         [HttpPost]
-        public IActionResult GuardarEmpleado(Empleado oEmpleado)
+        public IActionResult GuardarCategoria(Categoria oCategoria)
         {
-            var respuesta = empleadoDatos.GuardarEmpleado(oEmpleado);
+            var respuesta = categoriaDatos.GuardarCategoria(oCategoria);
 
             if (respuesta)
             {
@@ -46,12 +48,12 @@ namespace ProyectoFinal.Controllers
 
 
         //Método para la vista
-        public IActionResult EditarEmpleado(int id)
+        public IActionResult EditarCategoria(int id)
         {
 
-            var oEmpleado = empleadoDatos.ObtenerEmpleado(id);
+            var oCategoria = categoriaDatos.ObtenerCategoria(id);
 
-            return View(oEmpleado);
+            return View(oCategoria);
         }
 
 
@@ -59,9 +61,9 @@ namespace ProyectoFinal.Controllers
 
 
         [HttpPost]
-        public IActionResult EditarEmpleado(Empleado oEmpleado)
+        public IActionResult EditarCategoria(Categoria  oCategoria)
         {
-            var respuesta = empleadoDatos.EditarEmpleado(oEmpleado);
+            var respuesta = categoriaDatos.EditarCategoria(oCategoria);
 
             if (respuesta)
             {
@@ -77,18 +79,18 @@ namespace ProyectoFinal.Controllers
 
         //Método para vista eliminar 
 
-        public IActionResult EliminarEmpleado(int id)
+        public IActionResult EliminarCategoria(int id)
         {
-            var oEmpleado = empleadoDatos.ObtenerEmpleado(id);
+            var oCategoria = categoriaDatos.ObtenerCategoria(id);
 
-            return View(oEmpleado);
+            return View(oCategoria);
         }
 
         //Método para logica de eliminar 
         [HttpPost]
-        public IActionResult EliminarEmpleado(Empleado oEmpleado)
+        public IActionResult EliminarCategoria(Categoria oCategoria)
         {
-            var respuesta = empleadoDatos.EliminarEmpleado(oEmpleado.id_empleado);
+            var respuesta = categoriaDatos.EliminarCategoria(oCategoria.id_categoria);
 
             if (respuesta)
             {
@@ -101,5 +103,6 @@ namespace ProyectoFinal.Controllers
                 return View();
             }
         }
+
     }
 }

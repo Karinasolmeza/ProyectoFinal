@@ -7,7 +7,11 @@
         public string? Correo { get; set; }
         public string? Clave { get; set; }
 
+
+        //FK
         public int usuario_rol { get; set; }
+        //OBJETO ROL
+        public  Roles? rolAsociado { get; set; }
 
 
     }

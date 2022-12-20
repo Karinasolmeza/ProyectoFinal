@@ -1,0 +1,36 @@
+﻿@model Roles
+
+@{
+    ViewData["Title"] = "Guardar Rol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GuardarRol</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+
+    <h1>Página guardar Rol funciona</h1>
+
+    <form asp-action="GuardarRol" asp-controller="Roles" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Detalle del rol</label>
+            <input asp-for="rol_detalle" type="text" class="form-control">
+        </div>
+
+        <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
+        @*
+        <button type="submit" class="btn btn-primary">Submit</button>*@
+    </form>
+
+
+
+
+</body>
+</html>

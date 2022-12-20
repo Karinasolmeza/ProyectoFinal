@@ -1,0 +1,77 @@
+﻿@model List<Usuario>
+@{
+	ViewData["Title"] = "Usuarios";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>IndexUsuario</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+	<h1>Lista de Usuarios funciona</h1>
+
+
+	<div class="container">
+		<div class="table-responsive">
+			<div class="table-wrapper">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-xs-6">
+							<h2>Manejar <b>Usuarios</b></h2>
+						</div>
+						<div class="col-xs-6">
+							<a asp-action="GuardarUsuario" asp-controller="Acceso" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Crear Usuario</span></a>
+
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+
+							<th>Id Usuario</th>
+							<th>Nombre</th>
+							<th>Correo</th>
+							<th>Clave</th>
+							<th>ID Rol</th>
+
+							<th>Acción</th>
+						</tr>
+					</thead>
+
+					@foreach (var item in Model)
+					{
+
+						<tbody>
+							<tr>
+
+
+
+								<th>@item.id_usuario</th>
+								<th>@item.Nombre</th>
+								<th>@item.Correo</th>
+								<th>@item.Clave</th>
+								<th>@item.usuario_rol</th>
+
+
+								<td>
+									<a asp-action="EditarUsuario" asp-controller="Acceso" class="edit" asp-route-id="@item.id_usuario"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+
+									<a asp-action="EliminarUsuario" asp-controller="Acceso" class="bdanger" asp-route-id="@item.id_usuario"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								</td>
+							</tr>
+						</tbody>
+					}
+				</table>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

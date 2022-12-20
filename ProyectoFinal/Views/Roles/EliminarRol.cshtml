@@ -1,0 +1,33 @@
+﻿@model Roles
+@{
+    ViewData["Title"] = "Eliminar Rol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EliminarRol</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+    <h1>Eliminar @Html.DisplayTextFor(m => m.rol_detalle)</h1>
+
+    <form asp-action="EliminarRol" asp-controller="Roles" method="post">
+
+
+        <input asp-for="id_rol" type="hidden" class="form-control" />
+
+        <p>Seguro que quieres eliminar el registro de: @Html.DisplayTextFor(m => m.rol_detalle)?</p>
+
+        <button type="submit" class="btn-danger">Eliminar</button>
+
+    </form>
+
+
+
+</body>
+</html>

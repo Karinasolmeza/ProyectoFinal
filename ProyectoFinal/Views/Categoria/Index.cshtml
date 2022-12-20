@@ -1,0 +1,77 @@
+﻿@model List<Categoria>
+
+@{
+	ViewData["Title"] = "Categoria";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+
+	<h1>Lista de Categoria funciona</h1>
+
+
+	<div class="container">
+		<div class="table-responsive">
+			<div class="table-wrapper">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-xs-6">
+							<h2>Manejar <b>Categoria</b></h2>
+						</div>
+						<div class="col-xs-6">
+							<a asp-action="GuardarCategoria" asp-controller="Categoria" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Crear Categoria</span></a>
+
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+
+							<th>Id Categoria</th>
+							<th>Detalle</th>
+						
+
+							<th>Acción</th>
+						</tr>
+					</thead>
+
+					@foreach (var item in Model)
+					{
+
+						<tbody>
+							<tr>
+
+
+
+								<th>@item.id_categoria</th>
+								<th>@item.categ_detalle</th>
+							
+
+								<td>
+									<a asp-action="EditarCategoria" asp-controller="Categoria" class="edit" asp-route-id="@item.id_categoria"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+
+									<a asp-action="EliminarCategoria" asp-controller="Categoria" class="bdanger" asp-route-id="@item.id_categoria"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								</td>
+							</tr>
+						</tbody>
+					}
+				</table>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

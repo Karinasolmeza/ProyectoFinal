@@ -1,0 +1,52 @@
+﻿@model Roles
+@{
+    ViewData["Title"] = "Editar Rol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditarRol</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+
+    <h1>Editar Cliente @Html.DisplayTextFor(m => m.rol_detalle)</h1>
+
+
+    @*//Agregar id y esconderlo*@
+    <form asp-action="EditarRol" asp-controller="Roles" method="post">
+        <div class="form-group">
+            <input asp-for="id_rol" type="text" class="form-control" />
+
+
+         @*   <div class="form-group">
+                <label for="exampleInputEmail1">Nombre</label>
+                <input asp-for="rol_detalle" type="text" class="form-control">
+            </div>*@
+          
+       
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
+                <select asp-for="rol_detalle" class="form-select form-control" id="inputGroupSelect01">
+                    <option selected>Elige...</option>
+                    <option value="administrador">Administrador</option>
+                    <option value="empleado">Empleado</option>
+                    <option value="cliente">Cliente</option>
+
+                </select>
+            </div>
+
+            @*<button type="submit" class="btn btn-primary">Submit</button>*@
+            <button name="submit" type="submit" id="guardar-submit" data-submit="...guardando">Guardar</button>
+        </div>
+    </form>
+
+
+</body>
+</html>

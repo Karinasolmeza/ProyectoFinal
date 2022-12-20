@@ -4,14 +4,112 @@ using ProyectoFinal.Datos;
 using Microsoft.AspNetCore.Authentication.Cookies; //USING PARA COOKIES
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace ProyectoFinal.Controllers
 {
     public class AccesoController : Controller
     {
+        //INDEX ACCESO LOGIN
         public IActionResult Index()
         {
             return View();
+        }
+
+
+        DA_Logica daDatos = new DA_Logica();
+
+        //INDEX LISTAR DE USUARIOS
+        public IActionResult IndexUsuario()
+        {
+
+            var oLista = daDatos.ListarUsuarioRol();
+
+            return View(oLista);
+        }
+
+        //VISTA GUARDAR USUARIO
+        [Authorize(Roles = "administrador, supervisor")]
+        public IActionResult GuardarUsuario()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult GuardarUsuario(Usuario oUsuario)
+        {
+            var respuesta = daDatos.GuardarUsuario(oUsuario);
+
+            if (respuesta)
+            {
+
+                return RedirectToAction("IndexUsuario");
+
+            }
+
+            else
+            {
+                return View();
+            }
+        }
+
+        //Método para la vista
+        public IActionResult EditarUsuario(int id)
+        {
+
+            var oUsuario = daDatos.ObtenerUsuario(id);
+
+            return View(oUsuario);
+        }
+
+
+
+
+
+        [HttpPost]
+        public IActionResult EditarUsuario(Usuario oUsuario)
+        {
+            var respuesta = daDatos.EditarUsuario(oUsuario);
+
+            if (respuesta)
+            {
+
+                return RedirectToAction("IndexUsuario");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+        //Método para vista eliminar 
+
+        public IActionResult EliminarUsuario(int id)
+        {
+            var oUsuario = daDatos.ObtenerUsuario(id);
+
+            return View(oUsuario);
+        }
+
+        //Método para logica de eliminar 
+        [HttpPost]
+        public IActionResult EliminarUsuario(Usuario oUsuario)
+        {
+            var respuesta = daDatos.EliminarUsuario(oUsuario.id_usuario);
+
+            if (respuesta)
+            {
+
+                return RedirectToAction("IndexUsuario");
+            }
+
+            else
+            {
+                return View();
+            }
         }
 
 
@@ -20,7 +118,8 @@ namespace ProyectoFinal.Controllers
         {
 
             DA_Logica _da_usuario = new DA_Logica();
-            var usuario = _da_usuario.ValidarUsuario(_usuario.Correo, _usuario.Clave);
+            //var usuario = _da_usuario.ValidarUsuario(_usuario.Correo, _usuario.Clave);
+            var usuario = _da_usuario.AutenticarUsuario(_usuario.Correo, _usuario.Clave);
 
             if (usuario != null)
             {
@@ -30,11 +129,16 @@ namespace ProyectoFinal.Controllers
                 new Claim("Correo",usuario.Correo)
 
                 };
-               
-                    foreach ( string rol in usuario.usuario_rol) //.Roles  Iteramos roles desde var claime ingresamos alli, almacenamos en var rol de un array de strings de usuarios 
-                {
-                    claims.Add(new Claim(ClaimTypes.Role, rol));
-                }
+
+
+
+                //    foreach ( string rol in usuario.Roles) //.Roles  Iteramos roles desde var claime ingresamos alli, almacenamos en var rol de un array de strings de usuarios 
+                //{
+                //    claims.Add(new Claim(ClaimTypes.Role, rol));
+                //}
+
+                claims.Add(new Claim(ClaimTypes.Role, usuario.rolAsociado.rol_detalle));
+
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -47,7 +151,10 @@ namespace ProyectoFinal.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
+
             else {
+
+                TempData["Mensaje"] = "El usuario no existe!";
                 return View();
             }
         }

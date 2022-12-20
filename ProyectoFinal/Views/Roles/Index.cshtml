@@ -1,0 +1,74 @@
+﻿@model List<Roles>
+@{
+    ViewData["Title"] = "Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+    
+<h1>Lista de Roles funciona</h1>
+
+
+	<div class="container">
+		<div class="table-responsive">
+			<div class="table-wrapper">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-xs-6">
+							<h2>Manejar <b>Roles</b></h2>
+						</div>
+						<div class="col-xs-6">
+							<a asp-action="GuardarRol" asp-controller="Roles" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Crear Rol</span></a>
+
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+
+							<th>Id Rol</th>
+							<th>Detalle</th>
+						
+							<th>Acción</th>
+						</tr>
+					</thead>
+
+					@foreach (var item in Model)
+					{
+					
+						<tbody>
+						<tr>
+							
+
+
+								<th>@item.id_rol</th>	
+								<th>@item.rol_detalle</th>
+								
+								
+
+								  <td>
+									<a asp-action="EditarRol" asp-controller="Roles" class="edit" asp-route-id="@item.id_rol"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+								
+									<a asp-action="EliminarRol" asp-controller="Roles" class="bdanger" asp-route-id="@item.id_rol"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								</td>
+						</tr>
+						</tbody>
+					}
+				</table>
+				
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal.Datos;
 using ProyectoFinal.Models;
+using System.Data;
 
 
 namespace ProyectoFinal.Controllers
@@ -8,11 +10,10 @@ namespace ProyectoFinal.Controllers
 {
     public class ClienteController : Controller
     {
-
         ClienteDatos clienteDatos = new ClienteDatos();
 
 
-
+        [Authorize(Roles = "administrador, empleado")]
         public IActionResult Index()
         {
 

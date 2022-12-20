@@ -4,13 +4,12 @@ using System.Data;
 
 namespace ProyectoFinal.Datos
 {
-    public class EmpleadoDatos
+    public class RolesDatos
     {
 
-
-        public List<Empleado> ListarEmpleado()
+        public List<Roles> ListarRol()
         {
-            var oLista = new List<Empleado>();
+            var oLista = new List<Roles>();
             //Instancia de la conexion
 
             var conexion = new Conexion();
@@ -24,7 +23,7 @@ namespace ProyectoFinal.Datos
                 //Aca instancio un objeto para las query y la relaciono con el sp
 
 
-                SqlCommand cmd = new SqlCommand("ListarEmpleado", conexionTemp);
+                SqlCommand cmd = new SqlCommand("ListarRol", conexionTemp);
                 cmd.CommandType = CommandType.StoredProcedure;
                 //Comienzo la lectura de datos
                 using (var lector = cmd.ExecuteReader())
@@ -33,13 +32,11 @@ namespace ProyectoFinal.Datos
                     while (lector.Read())
                     {
                         //Añadiendo por cada vuelta un registro
-                        oLista.Add(new Empleado()
+                        oLista.Add(new Roles()
                         {
-                            id_empleado = Convert.ToInt32(lector["id_empleado"]),
-                            emple_nombre = Convert.ToString(lector["emple_nombre"]),
-                            emple_apellido= Convert.ToString(lector["emple_apellido"]),
-                            emple_id_supervisor = Convert.ToInt32(lector["emple_id_supervisor"]),
-                            emple_id_usuario = Convert.ToInt32(lector["emple_id_usuario"])
+                            id_rol = Convert.ToInt32(lector["id_rol"]),
+                            rol_detalle = Convert.ToString(lector["rol_detalle"]),
+                           
 
                         });
 
@@ -52,9 +49,9 @@ namespace ProyectoFinal.Datos
         }
 
 
-        public Empleado ObtenerEmpleado(int id_empleado)
+        public Roles ObtenerRol(int id_rol)
         {
-            var oEmpleado = new Empleado();
+            var oRol = new Roles();
 
             try
             {
@@ -65,22 +62,18 @@ namespace ProyectoFinal.Datos
                 {
 
                     conexionTemp.Open();
-                    SqlCommand cmd = new SqlCommand("ObtenerEmpleado", conexionTemp);
+                    SqlCommand cmd = new SqlCommand("ObtenerRol", conexionTemp);
 
-                    cmd.Parameters.AddWithValue("id_emple", id_empleado);
+                    cmd.Parameters.AddWithValue("id_rol", id_rol);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     using (var lector = cmd.ExecuteReader())
                     {
                         while (lector.Read())
                         {
-                            oEmpleado.id_empleado = Convert.ToInt32(lector["id_empleado"]);
-                            oEmpleado.emple_nombre = Convert.ToString(lector["emple_nombre"]);
-                            oEmpleado.emple_apellido = Convert.ToString(lector["emple_apellido"]);
-                            oEmpleado.emple_id_supervisor = Convert.ToInt32(lector["emple_id_supervisor"]);
-                            oEmpleado.emple_id_usuario = Convert.ToInt32(lector["emple_id_usuario"]);
-
-
+                            oRol.id_rol = Convert.ToInt32(lector["id_rol"]);
+                            oRol.rol_detalle = Convert.ToString(lector["rol_detalle"]);
+                           
 
                         }
 
@@ -91,10 +84,10 @@ namespace ProyectoFinal.Datos
             catch (Exception e)
             {
                 string error = e.Message;
-                return oEmpleado;
+                return oRol;
             }
 
-            return oEmpleado;
+            return oRol;
 
 
         }
@@ -102,7 +95,7 @@ namespace ProyectoFinal.Datos
 
 
 
-        public bool GuardarEmpleado(Empleado oEmpleado)
+        public bool GuardarRol(Roles oRol)
         {
             bool respuesta;
 
@@ -112,13 +105,10 @@ namespace ProyectoFinal.Datos
                 using (var conexionTemp = new SqlConnection(conexion.getCadenaSQL()))
                 {
                     conexionTemp.Open();
-                    SqlCommand cmd = new SqlCommand("GuardarEmpleado", conexionTemp);
+                    SqlCommand cmd = new SqlCommand("GuardarRol", conexionTemp);
 
-                    cmd.Parameters.AddWithValue("emple_nombre", oEmpleado.emple_nombre);
-                    cmd.Parameters.AddWithValue("emple_apellido", oEmpleado.emple_apellido);
-                    cmd.Parameters.AddWithValue("emple_id_supervisor", oEmpleado.emple_id_supervisor);
-                    cmd.Parameters.AddWithValue("emple_id_usuario", oEmpleado.emple_id_usuario);
-
+                    cmd.Parameters.AddWithValue("rol_detalle", oRol.rol_detalle);
+                 
 
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -139,7 +129,7 @@ namespace ProyectoFinal.Datos
 
 
 
-        public bool EditarEmpleado(Empleado oEmpleado)
+        public bool EditarRol(Roles oRol)
         {
             bool respuesta;
 
@@ -151,16 +141,12 @@ namespace ProyectoFinal.Datos
                 {
                     conexionTemp.Open();
 
-                    SqlCommand cmd = new SqlCommand("EditarEmpleado", conexionTemp);
+                    SqlCommand cmd = new SqlCommand("EditarRol", conexionTemp);
 
 
-                    cmd.Parameters.AddWithValue("id_empleado", oEmpleado.id_empleado);
-                    cmd.Parameters.AddWithValue("emple_nombre", oEmpleado.emple_nombre);
-                    cmd.Parameters.AddWithValue("emple_apellido", oEmpleado.emple_apellido);
-                    cmd.Parameters.AddWithValue("emple_id_supervisor", oEmpleado.emple_id_supervisor);
-                    cmd.Parameters.AddWithValue("emple_id_usuario", oEmpleado.emple_id_usuario);
-
-
+                    cmd.Parameters.AddWithValue("id_rol", oRol.id_rol);
+                    cmd.Parameters.AddWithValue("rol_detalle", oRol.rol_detalle);
+                  
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
 
@@ -180,7 +166,7 @@ namespace ProyectoFinal.Datos
 
         }
 
-        public bool EliminarEmpleado(int id_empleado)
+        public bool EliminarRol(int id_rol)
         {
             bool respuesta;
             try
@@ -189,8 +175,8 @@ namespace ProyectoFinal.Datos
                 using (var conexionTemp = new SqlConnection(conexion.getCadenaSQL()))
                 {
                     conexionTemp.Open();
-                    SqlCommand cmd = new SqlCommand("EliminarEmpleado", conexionTemp);
-                    cmd.Parameters.AddWithValue("id_empleado", id_empleado);
+                    SqlCommand cmd = new SqlCommand("EliminarRol", conexionTemp);
+                    cmd.Parameters.AddWithValue("id_rol", id_rol);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
@@ -204,8 +190,6 @@ namespace ProyectoFinal.Datos
             }
             return respuesta;
         }
-
-
 
 
     }

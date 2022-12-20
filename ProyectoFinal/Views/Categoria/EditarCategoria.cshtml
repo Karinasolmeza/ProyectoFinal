@@ -1,0 +1,40 @@
+﻿@model Categoria
+
+@{
+    ViewData["Title"] = "Editar Categoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+
+    <h1>Editar Categoria  @Html.DisplayTextFor(m => m.categ_detalle)</h1>
+
+    @*//Agregar id y esconderlo*@
+    <form asp-action="EditarCategoria" asp-controller="Categoria" method="post">
+        <div class="form-group">
+            <input asp-for="id_categoria" type="text" class="form-control" />
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nombre</label>
+                <input asp-for="categ_detalle" type="text" class="form-control">
+            </div>
+           
+
+            @*<button type="submit" class="btn btn-primary">Submit</button>*@
+            <button name="submit" type="submit" id="guardar-submit" data-submit="...guardando">Guardar</button>
+        </div>
+    </form>
+
+</body>
+</html>

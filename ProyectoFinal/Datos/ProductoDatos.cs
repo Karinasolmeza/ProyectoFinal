@@ -67,6 +67,51 @@ namespace ProyectoFinal.Datos
             return oLista;
         }
 
+        public List<Producto> mostrarProducto()
+        {
+            var oLista = new List<Producto>();
+            //Instancia de la conexion
+
+            var conexion = new Conexion();
+            //Usando using definimos el tiempo de vida de la conexion
+            using (var conexionTemp = new SqlConnection(conexion.getCadenaSQL()))
+            {
+                //Aca abro la conexion
+                conexionTemp.Open();
+
+
+                //Aca instancio un objeto para las query y la relaciono con el sp
+
+
+                SqlCommand cmd = new SqlCommand("mostrarProducto", conexionTemp);
+                cmd.CommandType = CommandType.StoredProcedure;
+                //Comienzo la lectura de datos
+                using (var lector = cmd.ExecuteReader())
+                {
+                    //mientras haya registros van a almacenarse en el oLista
+                    while (lector.Read())
+                    {
+                        //Añadiendo por cada vuelta un registro
+                        oLista.Add(new Producto()
+                        {
+                            prod_nombre = Convert.ToString(lector["prod_nombre"]),
+                            prod_precio = Convert.ToDecimal(lector["prod_precio"]),
+                            prod_stock = Convert.ToDecimal(lector["prod_stock"]),
+                            prod_detalle = Convert.ToString(lector["prod_detalle"]),
+                            prod_img = Convert.ToString(lector["prod_img"]),
+                  
+
+                            //prod_precio = Convert.ToDecimal(lector["prod_precio"].ToString()),Preguntar como guardar los decimales
+
+                        });
+
+                    }
+                }
+
+            }
+
+            return oLista;
+        }
 
         public Producto ObtenerProducto(int id_producto)
         {
