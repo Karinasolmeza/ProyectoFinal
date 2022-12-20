@@ -1,4 +1,4 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ProyectoFinal.Models;
 using System.Data;
 using System.Data.SqlClient;
