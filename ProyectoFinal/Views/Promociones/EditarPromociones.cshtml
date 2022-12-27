@@ -1,0 +1,45 @@
+﻿@model Promociones
+
+@{
+    ViewData["Title"] = "Editar Promociones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+
+    <h1>Editar Promociones  @Html.DisplayTextFor(m => m.promo_nombre)</h1>
+
+    @*//Agregar id y esconderlo*@
+    <form asp-action="EditarPromociones" asp-controller="Promociones" method="post">
+        <div class="form-group">
+            <input asp-for="id_promo" type="text" class="form-control" />
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nombre</label>
+                <input asp-for="promo_nombre" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Descuento</label>
+                <input asp-for="promo_descuento" type="text" class="form-control">
+            </div>
+
+
+
+            @*<button type="submit" class="btn btn-primary">Submit</button>*@
+            <button name="submit" type="submit" id="guardar-submit" data-submit="...guardando">Guardar</button>
+        </div>
+    </form>
+
+</body>
+</html>

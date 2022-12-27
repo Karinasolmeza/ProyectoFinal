@@ -1,0 +1,34 @@
+﻿@model Promociones
+@{
+    ViewData["Title"] = "Eliminar Promociones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+    <h1>Eliminar @Html.DisplayTextFor(m => m.promo_nombre)</h1>
+
+    <form asp-action="EliminarPromociones" asp-controller="Promociones" method="post">
+
+
+        <input asp-for="id_promo" type="hidden" class="form-control" />
+
+        <p>Seguro que quieres eliminar el registro de: @Html.DisplayTextFor(m => m.promo_nombre)?</p>
+
+        <button type="submit" class="btn-danger">Eliminar</button>
+
+    </form>
+
+</body>
+</html>

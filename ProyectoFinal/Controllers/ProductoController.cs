@@ -28,12 +28,14 @@ namespace ProyectoFinal.Controllers
 
             return View(oLista);
         }
+
+        [Authorize(Roles = "administrador, empleado")]
         public IActionResult GuardarProducto()
         {
             return View();
         }
 
-
+        [Authorize(Roles = "administrador, empleado")]
         [HttpPost]
         public IActionResult GuardarProducto(Producto oProducto)
         {
@@ -52,7 +54,7 @@ namespace ProyectoFinal.Controllers
             }
         }
 
-
+        [Authorize(Roles = "administrador, empleado")]
         //Método para la vista
         public IActionResult EditarProducto(int id)
         {
@@ -65,7 +67,7 @@ namespace ProyectoFinal.Controllers
 
 
 
-
+        [Authorize(Roles = "administrador, empleado")]
         [HttpPost]
         public IActionResult EditarProducto(Producto oProducto)
         {
@@ -84,7 +86,7 @@ namespace ProyectoFinal.Controllers
 
 
         //Método para vista eliminar 
-
+        [Authorize(Roles = "administrador, empleado")]
         public IActionResult EliminarProducto(int id)
         {
             var oProducto = productoDatos.ObtenerProducto(id);
@@ -92,6 +94,8 @@ namespace ProyectoFinal.Controllers
             return View(oProducto);
         }
 
+
+        [Authorize(Roles = "administrador, empleado")]
         //Método para logica de eliminar 
         [HttpPost]
         public IActionResult EliminarProducto(Producto oProducto)

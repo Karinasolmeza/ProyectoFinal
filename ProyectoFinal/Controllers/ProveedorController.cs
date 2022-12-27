@@ -11,8 +11,9 @@ namespace ProyectoFinal.Controllers
             ProveedorDatos proveedorDatos = new ProveedorDatos();
 
 
-        [Authorize(Roles ="administrador, empleado")]
-            public IActionResult Index()
+
+        [Authorize(Roles = "administrador, supervisor, empleado")]
+        public IActionResult Index()
             {
 
                 var oLista = proveedorDatos.ListarProveedor();
@@ -20,13 +21,16 @@ namespace ProyectoFinal.Controllers
                 return View(oLista);
             }
 
-            public IActionResult GuardarProveedor()
+
+        [Authorize(Roles = "administrador, supervisor, empleado")]
+        public IActionResult GuardarProveedor()
             {
                 return View();
             }
 
 
-            [HttpPost]
+        [Authorize(Roles = "administrador, supervisor, empleado")]
+        [HttpPost]
             public IActionResult GuardarProveedor(Proveedor oProveedor)
             {
                 var respuesta = proveedorDatos.GuardarProveedor(oProveedor);
@@ -45,8 +49,9 @@ namespace ProyectoFinal.Controllers
             }
 
 
-            //Método para la vista
-            public IActionResult EditarProveedor(int id)
+        [Authorize(Roles = "administrador, supervisor, empleado")]
+        //Método para la vista
+        public IActionResult EditarProveedor(int id)
             {
 
                 var oProveedor = proveedorDatos.ObtenerProveedor(id);
@@ -58,7 +63,8 @@ namespace ProyectoFinal.Controllers
 
 
 
-            [HttpPost]
+        [Authorize(Roles = "administrador, supervisor, empleado")]
+        [HttpPost]
             public IActionResult EditarProveedor(Proveedor oProveedor)
             {
                 var respuesta = proveedorDatos.EditarProveedor(oProveedor);
@@ -75,17 +81,21 @@ namespace ProyectoFinal.Controllers
             }
 
 
-            //Método para vista eliminar 
+        //Método para vista eliminar 
 
-            public IActionResult EliminarProveedor(int id)
+        [Authorize(Roles = "administrador, supervisor, empleado")]
+        public IActionResult EliminarProveedor(int id)
             {
                 var oProveedor = proveedorDatos.ObtenerProveedor(id);
 
                 return View(oProveedor);
             }
 
-            //Método para logica de eliminar 
-            [HttpPost]
+
+
+        [Authorize(Roles = "administrador, supervisor, empleado")]
+        //Método para logica de eliminar 
+        [HttpPost]
             public IActionResult EliminarProveedor(Proveedor oProveedor)
             {
                 var respuesta = proveedorDatos.EliminarProveedor(oProveedor.id_proveedor);

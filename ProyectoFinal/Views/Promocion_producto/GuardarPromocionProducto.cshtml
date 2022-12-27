@@ -1,0 +1,51 @@
+﻿@model Promocion_producto
+@{
+    ViewData["Title"] = "Guardar Promo-Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+    <h1>Guardar Promo Producto  funciona</h1>
+
+    <form asp-action="GuardarPromocionProducto" asp-controller="Promocion_producto" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Id Promo</label>
+            <input asp-for="id_promo" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Id Producto</label>
+            <input asp-for="id_producto" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="datetime">Fecha de inicio</label>
+            <input asp-for="promo_fecha_inicio" type="datetime-local" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="datetime">Fecha de fin</label>
+            <input asp-for="promo_fecha_fin" type="datetime-local" class="form-control">
+        </div>
+       @* <div class="form-group">
+            <label for="exampleInputPassword1"> total</label>
+            <input asp-for="det_ord_total" type="text" class="form-control">
+        </div>*@
+      
+        <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
+        @*
+        <button type="submit" class="btn btn-primary">Submit</button>*@
+    </form>
+
+
+</body>
+</html>

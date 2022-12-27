@@ -18,14 +18,16 @@ namespace ProyectoFinal.Controllers
             var oLista = rolesDatos.ListarRol();
 
             return View(oLista);
-        }
+           
 
+        }
+        [Authorize(Roles = "administrador, supervisor")]
         public IActionResult GuardarRol()
         {
             return View();
         }
 
-
+        [Authorize(Roles = "administrador, supervisor")]
         [HttpPost]
         public IActionResult GuardarRol(Roles oRol)
         {
@@ -35,16 +37,18 @@ namespace ProyectoFinal.Controllers
             {
 
                 return RedirectToAction("Index");
+               
 
             }
 
             else
             {
                 return View();
+                TempData["Mensaje"] = "El rol ha sido creado exitosamente";
             }
         }
 
-
+        [Authorize(Roles = "administrador, supervisor")]
         //Método para la vista
         public IActionResult EditarRol(int id)
         {
@@ -57,7 +61,7 @@ namespace ProyectoFinal.Controllers
 
 
 
-
+        [Authorize(Roles = "administrador, supervisor")]
         [HttpPost]
         public IActionResult EditarRol(Roles oRol)
         {
@@ -76,7 +80,7 @@ namespace ProyectoFinal.Controllers
 
 
         //Método para vista eliminar 
-
+        [Authorize(Roles = "administrador, supervisor")]
         public IActionResult EliminarRol(int id)
         {
             var oRol = rolesDatos.ObtenerRol(id);
@@ -84,6 +88,8 @@ namespace ProyectoFinal.Controllers
             return View(oRol);
         }
 
+
+        [Authorize(Roles = "administrador, supervisor")]
         //Método para logica de eliminar 
         [HttpPost]
         public IActionResult EliminarRol(Roles oRol)

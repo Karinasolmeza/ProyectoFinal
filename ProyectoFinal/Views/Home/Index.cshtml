@@ -4,41 +4,465 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
+
+
+
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <title>Home Tienda</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/animate.css">
+
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="~/css/aos.css">
+
+    <link rel="stylesheet" href="~/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="~/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/icomoon.css">
+    <link rel="stylesheet" href="~/css/style.css">
 </head>
 
 
-<body>
+
+<body class="goto-here">
 
 <div class="text-center">
-     @if (User.IsInRole("Administrador"))
+     @if (User.IsInRole("administrador"))
      {
        <h1>Bienvenido Administrador</h1>
    }
 
-    @if (User.IsInRole("Empleado"))
+    @if (User.IsInRole("empleado"))
     {
         <h1>Bienvenido Empleado</h1>
 
     }
-        @if (User.IsInRole("Cliente"))
+        @if (User.IsInRole("cliente"))
         {
             <h1>Bienvenido Cliente</h1>
         }
 
 
    
-        <h2 class="display-4">Soy la pagina INDEX HOME</h2>
+      
 
 
 </div>
-    
-</body>
+
+ 
+        <!--Carousel-->
+
+        <section id="home-section" class="hero">
+            <div class="home-slider owl-carousel">
+                <div class="slider-item" style="background-image: url(images/bg_1.png);">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                            <div class="col-md-12 ftco-animate text-center">
+                                <h1 class="mb-2">Bienvendido a FarmaNet </h1>
+                                <h2 class="subheading mb-4">Comercializamos medicamentos &amp; todos los laboratorios</h2>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-item" style="background-image: url(images/bg_2.png);">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                            <div class="col-sm-12 ftco-animate text-center">
+                                <h1 class="mb-2">Farmacia 24 hs abierta</h1>
+                                <h2 class="subheading mb-4">Hace tus compras cuando quieras</h2>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--End carousel-->
+       
+
+        <!--Products-->
+
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center mb-3 pb-3">
+                    <div class="col-md-12 heading-section text-center ftco-animate">
+                       
+                        <h2 class="mb-4">Nuestros Productos</h2>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 ftco-animate">
+                        <div class="product">
+                            <a href="#" class="img-prod">
+                                <img class="img-fluid" src="images/producto-1.jpg" alt="Producto 1">
+                                <span class="status">30%</span>
+                                <div class="overlay"></div>
+                            </a>
+                            <div class="text py-3 pb-4 px-3 text-center">
+                                <h3><a href="#">Aspirina</a></h3>
+                                <div class="d-flex">
+                                    <div class="pricing">
+                                        <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
+                                    </div>
+                                </div>product
+                                <div class="bottom-area d-flex px-3">
+                                    <div class="m-auto d-flex">
+
+                                    <a href="/Orden/GuardarOrdenCliente" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                            <span><i class="ion-ios-cart"></i></span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 ftco-animate">
+                        <div class="product">
+                            <a href="#" class="img-prod">
+                                <img class="img-fluid" src="images/producto-2.jpg" alt="Producto 2">
+                                <div class="overlay"></div>
+                            </a>
+                            <div class="text py-3 pb-4 px-3 text-center">
+                                <h3><a href="#">Redoxon</a></h3>
+                                <div class="d-flex">
+                                    <div class="pricing">
+                                        <p class="price"><span>$120.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="bottom-area d-flex px-3">
+                                    <div class="m-auto d-flex">
+                                  
+                                        <a href="/Orden/GuardarOrdenCliente" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                            <span><i class="ion-ios-cart"></i></span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 ftco-animate">
+                        <div class="product">
+                            <a href="#" class="img-prod">
+                                <img class="img-fluid" src="images/producto-3.jpg" alt="Producto 3">
+                                <div class="overlay"></div>
+                            </a>
+                            <div class="text py-3 pb-4 px-3 text-center">
+                                <h3><a href="#">Vacuna</a></h3>
+                                <div class="d-flex">
+                                    <div class="pricing">
+                                        <p class="price"><span>$120.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="bottom-area d-flex px-3">
+                                    <div class="m-auto d-flex">
+
+                                    <a href="/Orden/GuardarOrdenCliente" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                            <span><i class="ion-ios-cart"></i></span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 ftco-animate">
+                        <div class="product">
+                            <a href="#" class="img-prod">
+                                <img class="img-fluid" src="images/producto-4.jpg" alt="Producto 3">
+                                <div class="overlay"></div>
+                            </a>
+                            <div class="text py-3 pb-4 px-3 text-center">
+                                <h3><a href="#">Salbutamol</a></h3>
+                                <div class="d-flex">
+                                    <div class="pricing">
+                                        <p class="price"><span>$120.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="bottom-area d-flex px-3">
+                                    <div class="m-auto d-flex">
+                                     
+                                        <a href="/Orden/GuardarOrdenCliente" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                            <span><i class="ion-ios-cart"></i></span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-3 ftco-animate">
+                        <div class="product">
+                            <a href="#" class="img-prod">
+                                <img class="img-fluid" src="images/producto-6.jpg" alt="Producto 5">
+                                <span class="status">30%</span>
+                                <div class="overlay"></div>
+                            </a>
+                            <div class="text py-3 pb-4 px-3 text-center">
+                                <h3><a href="#">Vacuna Covid</a></h3>
+                                <div class="d-flex">
+                                    <div class="pricing">
+                                        <p class="price"><span class="mr-2 price-dc">$10000</span><span class="price-sale">$7000</span></p>
+                                    </div>
+                                </div>
+                                <div class="bottom-area d-flex px-3">
+                                    <div class="m-auto d-flex">
+
+                                    <a href="/Orden/GuardarOrdenCliente" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                            <span><i class="ion-ios-cart"></i></span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 ftco-animate">
+                        <div class="product">
+                            <a href="#" class="img-prod">
+                                <img class="img-fluid" src="images/producto-5.jpg" alt="Producto 6">
+                                <div class="overlay"></div>
+                            </a>
+                            <div class="text py-3 pb-4 px-3 text-center">
+                                <h3><a href="#">Empecid</a></h3>
+                                <div class="d-flex">
+                                    <div class="pricing">
+                                        <p class="price"><span>$120.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="bottom-area d-flex px-3">
+                                    <div class="m-auto d-flex">
+
+                                    <a href="/Orden/GuardarOrdenCliente" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                            <span><i class="ion-ios-cart"></i></span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 ftco-animate">
+                        <div class="product">
+                            <a href="#" class="img-prod">
+                                <img class="img-fluid" src="images/producto-7.jpg" alt="Berocca">
+                                <div class="overlay"></div>
+                            </a>
+                            <div class="text py-3 pb-4 px-3 text-center">
+                                <h3><a href="#">Berocca</a></h3>
+                                <div class="d-flex">
+                                    <div class="pricing">
+                                        <p class="price"><span>$120.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="bottom-area d-flex px-3">
+                                    <div class="m-auto d-flex">
+
+                                    <a href="/Orden/GuardarOrdenCliente" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                            <span><i class="ion-ios-cart"></i></span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 ftco-animate">
+                        <div class="product">
+                            <a href="#" class="img-prod">
+                                <img class="img-fluid" src="images/producto-8.jpg" alt="Equate">
+                                <div class="overlay"></div>
+                            </a>
+                            <div class="text py-3 pb-4 px-3 text-center">
+                                <h3><a href="#">Equate</a></h3>
+                                <div class="d-flex">
+                                    <div class="pricing">
+                                        <p class="price"><span>$120.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="bottom-area d-flex px-3">
+                                    <div class="m-auto d-flex">
+
+                                    <a href="/Orden/GuardarOrdenCliente" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                            <span><i class="ion-ios-cart"></i></span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--End product-->
+        <!--Promo-->
+
+        <section class="ftco-section img" style="background-image: url(images/bg-3.jpg);">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
+                        <span class="subheading">Los mejores precios para usted</span>
+                        <h2 class="mb-4">Promo del Día</h2>
+                        <p>Aproveche la oferta, queda poco tiempo</p>
+                        <h3><a href="#">Vacuna covid</a></h3>
+                        <span class="price">$10000 <a href="#">ahora $7000 solamente</a></span>
+                        <div id="timer" class="d-flex mt-5">
+
+                            <div class="time pl-3" id="hours"></div>
+                            <div class="time pl-3" id="minutes"></div>
+                            <div class="time pl-3" id="seconds"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <hr>
+
+
+        <!--Icons-->
+        <section class="ftco-section ftco-partner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm ftco-animate">
+                        <a href="#" class="partner"><img src="images/logo-sql.png" class="img-fluid" alt="Colorlib Template"></a>
+                    </div>
+                    <div class="col-sm ftco-animate">
+                        <a href="#" class="partner"><img src="images/logo-js.png" class="img-fluid" alt="Colorlib Template"></a>
+                    </div>
+                    <div class="col-sm ftco-animate">
+                        <a href="#" class="partner"><img src="images/logo-c.png" class="img-fluid" alt="Colorlib Template"></a>
+                    </div>
+                    <div class="col-sm ftco-animate">
+                        <a href="#" class="partner"><img src="images/logo-net.png" class="img-fluid" alt="Colorlib Template"></a>
+                    </div>
+                    <div class="col-sm ftco-animate">
+                        <a href="#" class="partner"><img src="images/logo-sqlserver.png" class="img-fluid" alt="Colorlib Template"></a>
+                    </div>
+                    <div class="col-sm ftco-animate">
+                        <a href="#" class="partner"><img src="images/logo-visualstudio.png" class="img-fluid" alt="Colorlib Template"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+        <footer class="ftco-footer ftco-section">
+            <div class="container">
+                <div class="row">
+                    <div class="mouse">
+                        <a href="#" class="mouse-icon">
+                            <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4">
+                            <h2 class="ftco-heading-2">FarmaNet</h2>
+                            <p>FarmaNet, un sistema web que permite control de funcionalidades básicas de una tienda retail.</p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4">
+                            <h2 class="ftco-heading-2">Alguna consulta? Contact</h2>
+                            <div class="block-23 mb-3">
+                                <ul>
+                                    <li><span class="icon icon-map-marker"></span><span class="text">Buenos Aires, Argentina</span></li>
+                                    <li><a href="#"><span class="icon icon-envelope"></span><span class="text">karinasolmeza83@gmail.com</span></a></li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+
+                        <p>
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script>This page is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://www.linkedin.com/in/karina-meza-bb7520239/" target="_blank">Karina Meza</a>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+
+
+        <!-- loader -->
+        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+        <script src="~/js/jquery.min.js"></script>
+        <script src="~/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="~/js/popper.min.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery.easing.1.3.js"></script>
+        <script src="~/js/jquery.waypoints.min.js"></script>
+        <script src="~/js/jquery.stellar.min.js"></script>
+        <script src="~/js/owl.carousel.min.js"></script>
+        <script src="~/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/js/aos.js"></script>
+        <script src="~/js/jquery.animateNumber.min.js"></script>
+        <script src="~/js/bootstrap-datepicker.js"></script>
+        <script src="~/js/scrollax.min.js"></script>
+
+
+        <script src="~/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+    </body>
 </html>

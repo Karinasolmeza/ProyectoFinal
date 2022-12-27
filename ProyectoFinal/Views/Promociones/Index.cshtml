@@ -1,0 +1,79 @@
+﻿@model List<Promociones>
+
+@{
+	ViewData["Title"] = "Promociones";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+
+	<h1>Lista de Promociones funciona</h1>
+
+
+	<div class="container">
+		<div class="table-responsive">
+			<div class="table-wrapper">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-xs-6">
+							<h2>Manejar <b>Promociones</b></h2>
+						</div>
+						<div class="col-xs-6">
+							<a asp-action="GuardarPromociones" asp-controller="Promociones" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Crear Promociones</span></a>
+
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+
+							<th>Promo numero</th>
+							<th>Nombre</th>
+							<th>Descuento</th>
+						
+
+							<th>Acción</th>
+						</tr>
+					</thead>
+
+					@foreach (var item in Model)
+					{
+
+						<tbody>
+							<tr>
+
+
+
+								<th>@item.id_promo</th>
+								<th>@item.promo_nombre</th>
+								<th>@item.promo_descuento</th>
+							
+
+								<td>
+									<a asp-action="EditarPromociones" asp-controller="Promociones" class="edit" asp-route-id="@item.id_promo"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+
+									<a asp-action="EliminarPromociones" asp-controller="Promociones" class="bdanger" asp-route-id="@item.id_promo"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								</td>
+							</tr>
+						</tbody>
+					}
+				</table>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

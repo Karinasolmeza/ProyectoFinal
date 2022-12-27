@@ -12,7 +12,7 @@ namespace ProyectoFinal.Controllers
         Proveedor_CategoriaDatos proveedor_CategoriaDatos = new Proveedor_CategoriaDatos();
 
 
-        [Authorize(Roles = "administrador, supervisor")]
+        [Authorize(Roles = "administrador, supervisor, empleado")]
         public IActionResult Index()
         {
 
@@ -21,12 +21,15 @@ namespace ProyectoFinal.Controllers
             return View(oLista);
         }
 
+
+        [Authorize(Roles = "administrador, supervisor, empleado")]
         public IActionResult GuardarProveedorCategoria()
         {
             return View();
         }
 
 
+        [Authorize(Roles = "administrador, supervisor, empleado")]
         [HttpPost]
         public IActionResult GuardarProveedorCategoria(Proveedor_Categoria oProveedor_Categoria)
         {
@@ -46,6 +49,7 @@ namespace ProyectoFinal.Controllers
         }
 
 
+        [Authorize(Roles = "administrador, supervisor, empleado")]
         //Método para la vista
         public IActionResult EditarProveedorCategoria(int id)
         {
@@ -59,6 +63,7 @@ namespace ProyectoFinal.Controllers
 
 
 
+        [Authorize(Roles = "administrador, supervisor, empleado")]
         [HttpPost]
         public IActionResult EditarProveedorCategoria(Proveedor_Categoria oProveedor_Categoria)
         {
@@ -76,9 +81,10 @@ namespace ProyectoFinal.Controllers
         }
 
 
+        [Authorize(Roles = "administrador, supervisor, empleado")]
         //Método para vista eliminar
 
-                public IActionResult EliminarProveedorCategoria(int id)
+        public IActionResult EliminarProveedorCategoria(int id)
         {
             var oProveedor_Categoria = proveedor_CategoriaDatos.ObtenerProveedorCategoria(id);
 
@@ -103,6 +109,7 @@ namespace ProyectoFinal.Controllers
         //            }
         //        }
 
+        [Authorize(Roles = "administrador, supervisor, empleado")]
         [HttpPost]
         public ActionResult EliminarProveedorCategoria(int id_proveedor, int id_categoria)
         {

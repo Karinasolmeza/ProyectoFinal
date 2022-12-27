@@ -20,12 +20,13 @@ namespace ProyectoFinal.Controllers
             return View(oLista);
         }
 
+        [Authorize(Roles = "administrador, supervisor")]
         public IActionResult GuardarEmpleado()
         {
             return View();
         }
 
-
+        [Authorize(Roles = "administrador, supervisor")]
         [HttpPost]
         public IActionResult GuardarEmpleado(Empleado oEmpleado)
         {
@@ -44,7 +45,7 @@ namespace ProyectoFinal.Controllers
             }
         }
 
-
+        [Authorize(Roles = "administrador, supervisor")]
         //Método para la vista
         public IActionResult EditarEmpleado(int id)
         {
@@ -57,7 +58,7 @@ namespace ProyectoFinal.Controllers
 
 
 
-
+        [Authorize(Roles = "administrador, supervisor")]
         [HttpPost]
         public IActionResult EditarEmpleado(Empleado oEmpleado)
         {
@@ -76,7 +77,7 @@ namespace ProyectoFinal.Controllers
 
 
         //Método para vista eliminar 
-
+        [Authorize(Roles = "administrador, supervisor")]
         public IActionResult EliminarEmpleado(int id)
         {
             var oEmpleado = empleadoDatos.ObtenerEmpleado(id);
@@ -84,6 +85,9 @@ namespace ProyectoFinal.Controllers
             return View(oEmpleado);
         }
 
+
+
+        [Authorize(Roles = "administrador, supervisor")]
         //Método para logica de eliminar 
         [HttpPost]
         public IActionResult EliminarEmpleado(Empleado oEmpleado)

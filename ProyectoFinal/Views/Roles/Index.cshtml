@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 <!DOCTYPE html>
 
 <html>
@@ -62,6 +64,8 @@
 									<a asp-action="EliminarRol" asp-controller="Roles" class="bdanger" asp-route-id="@item.id_rol"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 								</td>
 						</tr>
+
+
 						</tbody>
 					}
 				</table>
@@ -69,6 +73,18 @@
 			</div>
 		</div>
 	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+	@if (TempData["Mensaje"] != null)
+	{
+		<script>
+			$(function () {
+				var mensaje = '@TempData["Mensaje"]';
+				if (mensaje) {
+					toastr.success(mensaje);
+				}
+			});
+		</script>
+	}
 </body>
 </html>

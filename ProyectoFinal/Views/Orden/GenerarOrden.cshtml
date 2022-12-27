@@ -1,0 +1,77 @@
+﻿@model Orden
+@{
+    ViewData["Title"] = "Generar Orden";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+    <h1>Generar Orden funciona</h1>
+        <form asp-action="GenerarOrden" asp-controller="Orden" method="post">
+        <div class="form-group">
+            <label for="date">Fecha de generación</label>
+                <input type="date" name="ord_fecha_de_generacion" value="@Model.ord_fecha_de_generacion" />
+        </div>
+        <div class="form-group">
+            <label for="date">Fecha de entrega</label>
+                <input type="date" name="ord_fecha_entrega" value="@Model.ord_fecha_entrega" />
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Id Cliente</label>
+                <input type="text" name="ord_id_cliente" value="@Model.ord_id_cliente" />
+           
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Id Empleado</label>
+           
+                <input type="text" name="ord_id_empleado" value="@Model.ord_id_empleado" />
+        </div>
+
+        <!-- Tabla de detalles de la orden -->
+           <!-- Tabla de detalles de la orden -->
+    <table id="tblDetalles">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Detalles.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input type="text" name="Detalles[@i].det_id_producto" value="@Model.Detalles[i].det_id_producto" />
+                    </td>
+                    <td>
+                            <input type="text" name="Detalles[@i].det_ord_precio" value="@Model.Detalles[i].det_ord_precio" />
+                    </td>
+                    <td>
+                            <input type="text" name="Detalles[@i].det_ord_cantidad" value="@Model.Detalles[i].det_ord_cantidad" />
+                    </td>
+                </tr>
+     }
+
+
+
+        <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
+        </table>
+    </form>
+
+
+</body>
+
+</html>
