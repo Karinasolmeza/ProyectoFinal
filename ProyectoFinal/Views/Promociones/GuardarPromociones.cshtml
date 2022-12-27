@@ -1,0 +1,40 @@
+﻿@model Promociones
+@{
+    ViewData["Title"] = "Guardar Promociones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+<h1>Guardar Promociones funciona</h1>
+
+<form asp-action="GuardarPromociones" asp-controller="Promociones" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nombre</label>
+        <input asp-for="promo_nombre" type="text" class="form-control">
+    </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Descuento Sin % </label>
+            <input asp-for="promo_descuento" type="text" class="form-control">
+        </div>
+
+
+        <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
+  
+</form>
+
+</body>
+</html>
+

@@ -1,0 +1,33 @@
+﻿@model Detalle_orden
+@{
+    ViewData["Title"] = "Eliminar detalle orden";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+    <h1>Eliminar @Html.DisplayTextFor(m => m.id_detalle_orden)</h1>
+
+    <form asp-action="EliminarDetalleOrden" asp-controller="DetalleOrden" method="post">
+
+
+        <input asp-for="id_detalle_orden" type="hidden" class="form-control" />
+
+        <p>Seguro que quieres eliminar el registro de: @Html.DisplayTextFor(m => m.id_detalle_orden)?</p>
+
+        <button type="submit" class="btn-danger">Eliminar</button>
+
+    </form>
+</body>
+</html>

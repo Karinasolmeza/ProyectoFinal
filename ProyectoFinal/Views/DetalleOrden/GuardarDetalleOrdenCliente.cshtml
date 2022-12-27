@@ -1,0 +1,52 @@
+﻿@model Detalle_orden
+@{
+    ViewData["Title"] = "Guardar Detalle Orden Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+
+<body>
+
+    <h1 style="color: #2980B9;">Por favor completa el formulario para finalizar tu compra</h1>
+
+    <form asp-action="GuardarDetalleOrdenCliente" asp-controller="DetalleOrden" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">id orden</label>
+            <input asp-for="det_id_orden" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Id Producto</label>
+            <input asp-for="det_id_producto" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Precio</label>
+            <input asp-for="det_ord_precio" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1"> cantidad</label>
+            <input asp-for="det_ord_cantidad" type="text" class="form-control">
+        </div>
+        @* <div class="form-group">
+        <label for="exampleInputPassword1"> total</label>
+        <input asp-for="det_ord_total" type="text" class="form-control">
+        </div>*@
+
+        <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
+        @*
+        <button type="submit" class="btn btn-primary">Submit</button>*@
+    </form>
+
+
+</body>
+</html>

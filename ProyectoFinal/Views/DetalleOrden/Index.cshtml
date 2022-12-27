@@ -1,0 +1,83 @@
+﻿@model List<Detalle_orden>
+
+
+@{
+	ViewData["Title"] = "Orden";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+<body>
+	<h1>Lista de Detalle Ordenes funciona para Clientes</h1>
+
+
+	<div class="container">
+		<div class="table-responsive">
+			<div class="table-wrapper">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-xs-6">
+							<h2>Detalles</h2>
+						</div>
+						<div class="col-xs-6">
+							<a asp-action="GuardarDetalleOrden" asp-controller="DetalleOrden" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Generar Detalle</span></a>
+
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+
+
+							<th>Id detalle orden</th>
+							<th>Id Orden</th>
+							<th>Id Producto</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
+							<th>Total</th>
+							<th>Acción</th>
+
+						</tr>
+					</thead>
+
+					@foreach (var item in Model)
+					{
+
+						<tbody>
+							<tr>
+								<th>@item.id_detalle_orden</th>
+							
+								<th>@item.det_id_orden</th>
+								<th>@item.det_id_producto</th>
+								<th>@item.det_ord_precio</th>
+								<th>@item.det_ord_cantidad</th>
+								<th>@item.det_ord_total</th>
+
+
+								<td>
+									<a asp-action="EditarDetalleOrden" asp-controller="DetalleOrden" class="edit" asp-route-id="@item.id_detalle_orden"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+
+									<a asp-action="EliminarDetalleOrden" asp-controller="DetalleOrden" class="bdanger" asp-route-id="@item.id_detalle_orden"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								</td>
+							</tr>
+						</tbody>
+					}
+				</table>
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

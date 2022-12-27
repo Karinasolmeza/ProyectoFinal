@@ -22,12 +22,13 @@ namespace ProyectoFinal.Controllers
             return View(oLista);
         }
 
+        [Authorize(Roles = "administrador,empleado")]
         public IActionResult GuardarCategoria()
         {
             return View();
         }
 
-
+        [Authorize(Roles = "administrador,empleado")]
         [HttpPost]
         public IActionResult GuardarCategoria(Categoria oCategoria)
         {
@@ -46,7 +47,7 @@ namespace ProyectoFinal.Controllers
             }
         }
 
-
+        [Authorize(Roles = "administrador,empleado")]
         //Método para la vista
         public IActionResult EditarCategoria(int id)
         {
@@ -59,7 +60,7 @@ namespace ProyectoFinal.Controllers
 
 
 
-
+        [Authorize(Roles = "administrador,empleado")]
         [HttpPost]
         public IActionResult EditarCategoria(Categoria  oCategoria)
         {
@@ -78,7 +79,7 @@ namespace ProyectoFinal.Controllers
 
 
         //Método para vista eliminar 
-
+        [Authorize(Roles = "administrador,empleado")]
         public IActionResult EliminarCategoria(int id)
         {
             var oCategoria = categoriaDatos.ObtenerCategoria(id);
@@ -86,6 +87,8 @@ namespace ProyectoFinal.Controllers
             return View(oCategoria);
         }
 
+
+        [Authorize(Roles = "administrador,empleado")]
         //Método para logica de eliminar 
         [HttpPost]
         public IActionResult EliminarCategoria(Categoria oCategoria)

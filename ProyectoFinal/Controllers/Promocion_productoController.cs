@@ -2,39 +2,39 @@
 using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal.Datos;
 using ProyectoFinal.Models;
-using System.Data;
-
 
 namespace ProyectoFinal.Controllers
-
 {
-    public class ClienteController : Controller
+    public class Promocion_productoController : Controller
     {
-        ClienteDatos clienteDatos = new ClienteDatos();
+
+        Promocion_productoDatos promocion_productoDatos = new Promocion_productoDatos();
 
 
         [Authorize(Roles = "administrador, empleado, supervisor")]
         public IActionResult Index()
         {
 
-            var oLista = clienteDatos.ListarCliente();
+            var oLista = promocion_productoDatos.ListarPromocionProducto();
 
             return View(oLista);
         }
 
+
         [Authorize(Roles = "administrador, empleado, supervisor")]
-        public IActionResult GuardarCliente()
+        public IActionResult GuardarPromocionProducto()
         {
             return View();
         }
 
         [Authorize(Roles = "administrador, empleado, supervisor")]
         [HttpPost]
-        public IActionResult GuardarCliente(Cliente oCliente)
+        public IActionResult GuardarPromocionProducto(Promocion_producto oPromocion_producto)
         {
-            var respuesta = clienteDatos.GuardarCliente(oCliente);
+            var respuesta = promocion_productoDatos.GuardarPromocionProducto(oPromocion_producto);
 
-            if (respuesta){
+            if (respuesta)
+            {
 
                 return RedirectToAction("Index");
 
@@ -46,29 +46,27 @@ namespace ProyectoFinal.Controllers
             }
         }
 
+
+
         [Authorize(Roles = "administrador, empleado, supervisor")]
-        //Método para la vista
-        public IActionResult EditarCliente(int id)
+        public IActionResult EditarPromocionProducto(int id)
         {
-            
-            var oCliente = clienteDatos.ObtenerCliente(id);
-
-            return View(oCliente);
+            var oPromocion_producto = promocion_productoDatos.ObtenerPromocionProducto(id);
+            return View(oPromocion_producto);
         }
-
-
 
 
         [Authorize(Roles = "administrador, empleado, supervisor")]
         [HttpPost]
-        public IActionResult EditarCliente(Cliente oCliente)
+        public IActionResult EditarPromocionProducto(Promocion_producto oPromocion_producto)
         {
-            var respuesta = clienteDatos.EditarCliente(oCliente);
+            var respuesta = promocion_productoDatos.EditarPromocionProducto(oPromocion_producto);
 
-            if (respuesta) {
+            if (respuesta)
+            {
 
                 return RedirectToAction("Index");
-                    }
+            }
             else
             {
                 return View();
@@ -76,24 +74,28 @@ namespace ProyectoFinal.Controllers
         }
 
 
+
+
+
         //Método para vista eliminar 
         [Authorize(Roles = "administrador, empleado, supervisor")]
-        public IActionResult EliminarCliente(int id)
+        public IActionResult EliminarPromocionProducto(int id)
         {
-            var oCliente = clienteDatos.ObtenerCliente(id);
+            var oPromocion_producto = promocion_productoDatos.ObtenerPromocionProducto(id);
 
-            return View(oCliente);
+            return View(oPromocion_producto);
         }
 
 
         [Authorize(Roles = "administrador, empleado, supervisor")]
         //Método para logica de eliminar 
         [HttpPost]
-        public IActionResult EliminarCliente(Cliente oCliente)
+        public IActionResult EliminarPromocionProducto(Promocion_producto oPromocion_producto)
         {
-            var respuesta = clienteDatos.EliminarCliente(oCliente.id_cliente);
+            var respuesta = promocion_productoDatos.EliminarPromocionProducto(oPromocion_producto.promo_numero);
 
-            if (respuesta) {
+            if (respuesta)
+            {
 
                 return RedirectToAction("Index");
             }
@@ -106,6 +108,4 @@ namespace ProyectoFinal.Controllers
 
 
     }
-
-
 }

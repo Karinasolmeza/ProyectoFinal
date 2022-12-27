@@ -1,0 +1,82 @@
+﻿@model List<Orden>
+
+
+@{
+	ViewData["Title"] = "Orden";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+<body>
+<h1>Lista de Ordenes funciona para Clientes</h1>
+
+
+	<div class="container">
+		<div class="table-responsive">
+			<div class="table-wrapper">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-xs-6">
+							<h2>Ordenes</h2>
+						</div>
+						<div class="col-xs-6">
+							<a asp-action="GuardarOrden" asp-controller="Orden" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Generar Orden</span></a>
+
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+
+							
+							<th>Id orden</th>
+							<th>Fecha de generacion</th>
+							<th>Fecha entrega</th>
+							<th>Id Cliente</th>
+							<th>Id Empleado</th>
+							<th>Acción</th>
+							
+						</tr>
+					</thead>
+
+					@foreach (var item in Model)
+					{
+					
+						<tbody>
+						<tr>
+								<th>@item.id_orden</th>
+								<th>@String.Format("{0:dd/MM/yyyy}", item.ord_fecha_de_generacion)</th>
+								<th>@String.Format("{0:dd/MM/yyyy}", item.ord_fecha_entrega)</th>
+
+								<th>@item.ord_id_cliente</th>
+								<th>@item.ord_id_empleado</th>
+							
+
+
+						  <td>
+									<a asp-action="EditarOrden" asp-controller="Orden" class="edit" asp-route-id="@item.id_orden"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+									
+									<a asp-action="EliminarOrden" asp-controller="Orden" class="bdanger" asp-route-id="@item.id_orden"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								</td>
+						</tr>
+						</tbody>
+					}
+				</table>
+				
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

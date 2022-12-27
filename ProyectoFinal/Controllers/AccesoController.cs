@@ -19,7 +19,7 @@ namespace ProyectoFinal.Controllers
 
 
         DA_Logica daDatos = new DA_Logica();
-
+        [Authorize(Roles = "administrador, supervisor")]
         //INDEX LISTAR DE USUARIOS
         public IActionResult IndexUsuario()
         {
@@ -36,7 +36,7 @@ namespace ProyectoFinal.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = "administrador, supervisor")]
         [HttpPost]
         public IActionResult GuardarUsuario(Usuario oUsuario)
         {
@@ -55,6 +55,7 @@ namespace ProyectoFinal.Controllers
             }
         }
 
+        [Authorize(Roles = "administrador, supervisor")]
         //Método para la vista
         public IActionResult EditarUsuario(int id)
         {
@@ -67,7 +68,7 @@ namespace ProyectoFinal.Controllers
 
 
 
-
+        [Authorize(Roles = "administrador, supervisor")]
         [HttpPost]
         public IActionResult EditarUsuario(Usuario oUsuario)
         {
@@ -86,7 +87,7 @@ namespace ProyectoFinal.Controllers
 
 
         //Método para vista eliminar 
-
+        [Authorize(Roles = "administrador, supervisor")]
         public IActionResult EliminarUsuario(int id)
         {
             var oUsuario = daDatos.ObtenerUsuario(id);
@@ -94,6 +95,7 @@ namespace ProyectoFinal.Controllers
             return View(oUsuario);
         }
 
+        [Authorize(Roles = "administrador, supervisor")]
         //Método para logica de eliminar 
         [HttpPost]
         public IActionResult EliminarUsuario(Usuario oUsuario)
