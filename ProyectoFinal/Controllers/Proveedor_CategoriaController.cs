@@ -84,7 +84,7 @@ namespace ProyectoFinal.Controllers
         [Authorize(Roles = "administrador, supervisor, empleado")]
         //Método para vista eliminar
 
-        public IActionResult EliminarProveedorCategoria(int id)
+                public IActionResult EliminarProveedorCategoria(int id)
         {
             var oProveedor_Categoria = proveedor_CategoriaDatos.ObtenerProveedorCategoria(id);
 
