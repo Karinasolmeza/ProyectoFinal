@@ -93,7 +93,7 @@ namespace ProyectoFinal.Datos
                     {
                         //Añadiendo por cada vuelta un registro
                         oLista.Add(new Producto()
-                        {
+                        {   id_producto= Convert.ToInt32(lector["id_producto"]),
                             prod_nombre = Convert.ToString(lector["prod_nombre"]),
                             prod_precio = Convert.ToDecimal(lector["prod_precio"]),
                             prod_stock = Convert.ToDecimal(lector["prod_stock"]),

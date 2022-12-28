@@ -19,7 +19,7 @@
 </head>
 
 <body>
-<h1>Lista de Productos </h1>
+
 
 
 	<div class="container">
@@ -28,7 +28,7 @@
 				<div class="table-title">
 					<div class="row">
 						<div class="col-xs-6">
-							<h2>Productos</h2>
+							<h2> Lista de Nuestros Productos</h2>
 						</div>
 						@*<div class="col-xs-6">
 							<a asp-action="GuardarProducto" asp-controller="Producto" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Crear Producto</span></a>
@@ -40,7 +40,7 @@
 					<thead>
 						<tr>
 
-							
+							<th>Id Producto</th>
 							<th>Nombre</th>
 							<th>Precio</th>
 							<th>Stock</th>
@@ -56,6 +56,7 @@
 					
 						<tbody>
 						<tr>
+							    <th>@item.id_producto</th>
 								<th>@item.prod_nombre</th>
 								<th>@item.prod_precio</th>
 								<th>@item.prod_stock</th>
