@@ -34,7 +34,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["Mensaje"] = "Orden ha sido generada exitosamente";
                 return RedirectToAction("Index");
 
             }
@@ -60,7 +60,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["Mensaje"] = "Orden ha sido guardado exitosamente, Por favor complete su detalle ";
                 return RedirectToAction("GuardarDetalleOrdenCliente", "DetalleOrden");
 
             }
@@ -129,7 +129,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeInfo"] = "Orden actualizada exitosamente";
                 return RedirectToAction("Index");
             }
             else
@@ -158,7 +158,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeError"] = "Orden eliminada";
                 return RedirectToAction("Index");
             }
 

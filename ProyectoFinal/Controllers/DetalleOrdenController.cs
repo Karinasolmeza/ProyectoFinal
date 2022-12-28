@@ -34,7 +34,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["Mensaje"] = "El Detalle ha sido guardado exitosamente";
                 return RedirectToAction("Index");
 
             }
@@ -60,7 +60,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["Mensaje"] = "El Detalle ha sido guardado exitosamente";
                 return RedirectToAction("Index", "Home");
 
             }
@@ -88,7 +88,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeInfo"] = "El Detalle ha sido actualizado";
                 return RedirectToAction("Index");
             }
             else
@@ -119,7 +119,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeError"] = "El Detalle ha sido eliminado";
                 return RedirectToAction("Index");
             }
 

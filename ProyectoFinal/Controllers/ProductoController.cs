@@ -43,7 +43,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["Mensaje"] = "El Producto ha sido guardado exitosamente";
                 return RedirectToAction("Index");
 
             }
@@ -75,7 +75,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeInfo"] = "El Producto ha sido actualizado";
                 return RedirectToAction("Index");
             }
             else
@@ -104,7 +104,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeError"] = "Producto eliminado";
                 return RedirectToAction("Index");
             }
 

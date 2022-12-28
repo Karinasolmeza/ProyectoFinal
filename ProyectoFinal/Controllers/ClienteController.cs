@@ -36,6 +36,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta){
 
+                TempData["Mensaje"] = "El Cliente ha sido guardado exitosamente";
                 return RedirectToAction("Index");
 
             }
@@ -67,6 +68,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta) {
 
+                TempData["MensajeInfo"] = "El Cliente ha sido actualizado";
                 return RedirectToAction("Index");
                     }
             else
@@ -95,6 +97,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta) {
 
+                TempData["MensajeError"] = "El Cliente ha sido eliminado";
                 return RedirectToAction("Index");
             }
 

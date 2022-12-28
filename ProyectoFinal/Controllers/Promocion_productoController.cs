@@ -35,7 +35,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["Mensaje"] = "Promo asignada exitosamente";
                 return RedirectToAction("Index");
 
             }
@@ -64,7 +64,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeInfo"] = "Promo actualizada exitosamente";
                 return RedirectToAction("Index");
             }
             else
@@ -96,7 +96,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeError"] = "Promo para producto eliminada";
                 return RedirectToAction("Index");
             }
 

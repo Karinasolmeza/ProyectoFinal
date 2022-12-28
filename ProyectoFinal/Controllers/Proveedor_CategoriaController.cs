@@ -37,7 +37,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["Mensaje"] = "Proveedor por categoria ha sido guardado exitosamente";
                 return RedirectToAction("Index");
 
             }
@@ -71,7 +71,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeInfo"] = "Proveedor por categoria ha sido actualizado exitosamente";
                 return RedirectToAction("Index");
             }
             else
@@ -125,7 +125,7 @@ namespace ProyectoFinal.Controllers
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
-
+                TempData["MensajeError"] = "Proveedor por categoria eliminado";
                 // Redirigir a la vista "ListadoProveedoresCategorias"
                 return RedirectToAction("Index");
             }

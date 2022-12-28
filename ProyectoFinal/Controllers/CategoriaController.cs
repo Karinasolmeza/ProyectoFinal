@@ -36,7 +36,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["Mensaje"] = "Categoria ha sido creada exitosamente";
                 return RedirectToAction("Index");
 
             }
@@ -68,7 +68,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeInfo"] = "Categoria ha sido actualizada";
                 return RedirectToAction("Index");
             }
             else
@@ -97,7 +97,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeError"] = "Categoria ha sido eliminada";
                 return RedirectToAction("Index");
             }
 

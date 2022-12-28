@@ -12,6 +12,12 @@
     <meta name="viewport" content="width=device-width" />
     <title>GuardarRol</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  
+
+
 </head>
 <body>
 
@@ -23,15 +29,13 @@
             <label for="exampleInputEmail1">Detalle del rol</label>
             <input asp-for="rol_detalle" type="text" class="form-control">
         </div>
-
+       
         <button name="submit" type="submit" id="guardar-submit" data-submit="...Sending">Submit</button>
 
     
-
+   
     
     </form>
-  
-
 
 
 </body>

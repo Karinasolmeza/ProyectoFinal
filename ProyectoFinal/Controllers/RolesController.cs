@@ -35,7 +35,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["Mensaje"] = "El rol ha sido creado exitosamente";
                 return RedirectToAction("Index");
                
 
@@ -44,7 +44,7 @@ namespace ProyectoFinal.Controllers
             else
             {
                 return View();
-                TempData["Mensaje"] = "El rol ha sido creado exitosamente";
+                TempData["MensajeError"] = "El rol no ha sido creado exitosamente";
             }
         }
 
@@ -69,7 +69,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeInfo"] = "El rol ha sido actualizado";
                 return RedirectToAction("Index");
             }
             else
@@ -98,7 +98,7 @@ namespace ProyectoFinal.Controllers
 
             if (respuesta)
             {
-
+                TempData["MensajeError"] = "El rol ha sido eliminado";
                 return RedirectToAction("Index");
             }
 

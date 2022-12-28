@@ -37,8 +37,8 @@ namespace ProyectoFinal.Controllers
 
                 if (respuesta)
                 {
-
-                    return RedirectToAction("Index");
+                TempData["Mensaje"] = "El Proveedor ha sido guardado exitosamente";
+                return RedirectToAction("Index");
 
                 }
 
@@ -71,8 +71,8 @@ namespace ProyectoFinal.Controllers
 
                 if (respuesta)
                 {
-
-                    return RedirectToAction("Index");
+                TempData["MensajeInfo"] = "Proveedor actualizado";
+                return RedirectToAction("Index");
                 }
                 else
                 {
@@ -102,8 +102,8 @@ namespace ProyectoFinal.Controllers
 
                 if (respuesta)
                 {
-
-                    return RedirectToAction("Index");
+                TempData["MensajeError"] = "Proveedor eliminado";
+                return RedirectToAction("Index");
                 }
 
                 else

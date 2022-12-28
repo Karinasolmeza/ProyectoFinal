@@ -13,6 +13,13 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css""/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"></script>
+	
 </head>
 <body>
 
@@ -73,18 +80,30 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-	@if (TempData["Mensaje"] != null)
-	{
-		<script>
-			$(function () {
-				var mensaje = '@TempData["Mensaje"]';
-				if (mensaje) {
-					toastr.success(mensaje);
-				}
-			});
-		</script>
-	}
+	<script>
+		$(function () {
+			var mensaje = '@TempData["Mensaje"]';
+			if (mensaje) {
+				toastr.success(mensaje);
+			}
+		});
+
+		$(function () {
+			var mensajeError = '@TempData["MensajeError"]';
+			if (mensajeError) {
+				toastr.warning(mensajeError);
+			}
+		});
+
+	 $(function () {
+    var mensajeInfo = '@TempData["MensajeInfo"]';
+    if (mensajeInfo) {
+      toastr.info(mensajeInfo);
+    }
+  });
+	</script>
+
+
 </body>
 </html>
