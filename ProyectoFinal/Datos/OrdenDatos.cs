@@ -53,18 +53,7 @@ namespace ProyectoFinal.Datos
 
                             ord_id_cliente = Convert.ToInt32(lector["ord_id_cliente"]),
                             ord_id_empleado = Convert.ToInt32(lector["ord_id_empleado"]),
-                            //string ord_fecha_generacion = Convert.ToDateTime(lector["ord_fecha_generacion"]).ToString("dd/MM/yyyy");
-                            //detalleAsociado = new DetalleOrden()
-                            //{
-                            //    id_detalle_orden = Convert.ToInt32(lector["id_detalle_orden"]),
-                            //    det_id_orden = Convert.ToInt32(lector["det_id_orden"]),
-                            //    det_id_producto = Convert.ToInt32(lector["ord_id_producto"]),
-                            //    det_ord_precio = Convert.ToDecimal(lector["det_ord_precio"]),
-                            //    det_ord_cantidad = Convert.ToDecimal(lector["det_ord_cantidad"])
-
-
-                            //}
-
+                           
 
 
 
